@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
     public float runSpeed;
 
 	void Start () {
+
         walkSpeed = 3;
         runSpeed = 6;
         moveSpeed = walkSpeed;
@@ -16,8 +17,8 @@ public class Movement : MonoBehaviour {
 	
 	void Update ()
     {
+        Move();
         SwitchBackAndForthBetweenWalkAndRun();
-        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
 	}
 
     void SwitchBackAndForthBetweenWalkAndRun()
@@ -30,5 +31,10 @@ public class Movement : MonoBehaviour {
         {
             moveSpeed = walkSpeed;
         }
+    }
+
+    void Move()
+    {
+        transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, 0f);
     }
 }
