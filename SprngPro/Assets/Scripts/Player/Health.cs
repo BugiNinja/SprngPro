@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public PlayerStats stats; 
+    public PlayerStats Stats; 
     Animator anim;
 
     void Start()
@@ -14,6 +14,6 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        anim.SetInteger("healthStage", stats.healthCurrent);
+        anim.SetInteger("healthStage", Stats.HealthCurrent);
     }
 }

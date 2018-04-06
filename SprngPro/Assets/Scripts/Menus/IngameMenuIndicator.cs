@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class IngameMenuIndicator : MonoBehaviour {
 
-    public IngameMenu igMenu;
+    public IngameMenu InGameMenu;
 
-    public int menuIndex;
-    public int menuIndexMin;
-    public int menuIndexMax;
+    public int MenuIndex;
+    public int MenuIndexMin;
+    public int MenuIndexMax;
 
     private void Start()
     {
-        menuIndex = 0;
-        menuIndexMin = 0;
-        menuIndexMax = 1;
+        MenuIndex = 0;
+        MenuIndexMin = 0;
+        MenuIndexMax = 1;
     }
 
     private void Update()
@@ -30,35 +30,35 @@ public class IngameMenuIndicator : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            menuIndex++;
+            MenuIndex++;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            menuIndex--;
+            MenuIndex--;
         }
     }
 
     public void ChooseMenuOption()
     {
-        if (menuIndex == 0 && Input.GetKeyDown(KeyCode.Return))
+        if (MenuIndex == 0 && Input.GetKeyDown(KeyCode.Return))
         {
-            igMenu.Options();
+            InGameMenu.Options();
         }
-        else if (menuIndex == 1 && Input.GetKeyDown(KeyCode.Return))
+        else if (MenuIndex == 1 && Input.GetKeyDown(KeyCode.Return))
         {
-            igMenu.ExitGame();
+            InGameMenu.ExitGame();
         }
     }
 
     public void MoveIndicatorWithKeys()
     {
-        if(menuIndex == 0)
+        if(MenuIndex == 0)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("OptionsButton").transform.position.y;
             transform.position = position;
         }
-        else if(menuIndex == 1)
+        else if(MenuIndex == 1)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("ExitButton").transform.position.y;
@@ -73,13 +73,13 @@ public class IngameMenuIndicator : MonoBehaviour {
 
     public void CheckIndexCap()
     {
-        if (menuIndex < menuIndexMin)
+        if (MenuIndex < MenuIndexMin)
         {
-            menuIndex = menuIndexMax;
+            MenuIndex = MenuIndexMax;
         }
-        else if (menuIndex > menuIndexMax)
+        else if (MenuIndex > MenuIndexMax)
         {
-            menuIndex = menuIndexMin;
+            MenuIndex = MenuIndexMin;
         }
     }
 }

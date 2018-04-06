@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class IngameMenuSpawner : MonoBehaviour {
 
-    public GameObject inGameMenu;
-    public bool pressedEsc;
+    public GameObject InGameMenu;
+    public bool PressedEsc;
 
     private void Start()
     {
-        pressedEsc = false;
-        inGameMenu.SetActive(false);
+        PressedEsc = false;
+        InGameMenu.SetActive(false);
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!pressedEsc)
+            if(!PressedEsc)
             {
-                inGameMenu.SetActive(true);
-                pressedEsc = true;
+                InGameMenu.SetActive(true);
+                PressedEsc = true;
                 if(Time.timeScale == 1)
                 {
                     Time.timeScale = 0;
@@ -32,8 +32,8 @@ public class IngameMenuSpawner : MonoBehaviour {
             }
             else
             {
-                inGameMenu.SetActive(false);
-                pressedEsc = false;
+                InGameMenu.SetActive(false);
+                PressedEsc = false;
                 Time.timeScale = 1;
             }
         }

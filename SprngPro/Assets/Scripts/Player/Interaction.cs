@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour {
 
-    public bool canInteract;
-    public int interactableCount;
+    private bool canInteract;
+    private int interactableCount;
 
 	void Start () {
         canInteract = false;
@@ -23,7 +23,7 @@ public class Interaction : MonoBehaviour {
         }
 	}
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Interactable" || other.gameObject.tag == "NPC")
         {
@@ -37,7 +37,7 @@ public class Interaction : MonoBehaviour {
         {
             interactableCount--;
         }
-    }
+    }*/
 
     /*private void ChooseInteractable()
     {

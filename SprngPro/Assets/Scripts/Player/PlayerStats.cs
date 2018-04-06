@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour {
 
     private bool isHit;
-    public bool isDead;
+    //private bool isDead;
 
-    public int healthMax;
-    public int healthCurrent;
+    private int healthMax;
+    public int HealthCurrent;
 
 	void Start () {
         isHit = false;
-        isDead = false;
+        //isDead = false;
 
         healthMax = 3;
-        healthCurrent = healthMax;
+        HealthCurrent = healthMax;
 	}
 	
 	void Update () {
@@ -32,17 +32,17 @@ public class PlayerStats : MonoBehaviour {
 
         if (isHit)
         {
-            healthCurrent--;
+            HealthCurrent--;
             isHit = false;
         }
     }
 
     public void CheckIfDead()
     {
-        if(healthCurrent <= 0)
+        if(HealthCurrent <= 0)
         {
-            healthCurrent = 0;
-            isDead = true;
+            HealthCurrent = 0;
+            //isDead = true;
             Debug.Log("You died!");
         }
     }

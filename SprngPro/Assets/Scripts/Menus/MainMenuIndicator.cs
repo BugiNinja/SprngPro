@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MainMenuIndicator : MonoBehaviour {
 
-    public MainMenu menu;
+    public MainMenu Menu;
 
-    public int menuIndex;
-    public int menuIndexMin;
-    public int menuIndexMax;
+    public int MenuIndex;
+    public int MenuIndexMin;
+    public int MenuIndexMax;
 
     private void Start()
     {
-        menuIndex = 0;
-        menuIndexMin = 0;
-        menuIndexMax = 3;
+        MenuIndex = 0;
+        MenuIndexMin = 0;
+        MenuIndexMax = 3;
     }
 
     private void Update()
@@ -30,55 +30,55 @@ public class MainMenuIndicator : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.S))
         {
-            menuIndex++;
+            MenuIndex++;
         }
         if(Input.GetKeyDown(KeyCode.W))
         {
-            menuIndex--;
+            MenuIndex--;
         }
     }
 
     public void ChooseMenuOption()
     {
-        if (menuIndex == 0 && Input.GetKeyDown(KeyCode.Return))
+        if (MenuIndex == 0 && Input.GetKeyDown(KeyCode.Return))
         {
-            menu.PlayGame();
+            Menu.PlayGame();
         }
-        else if (menuIndex == 1 && Input.GetKeyDown(KeyCode.Return))
+        else if (MenuIndex == 1 && Input.GetKeyDown(KeyCode.Return))
         {
-            menu.Options();
+            Menu.Options();
         }
-        else if (menuIndex == 2 && Input.GetKeyDown(KeyCode.Return))
+        else if (MenuIndex == 2 && Input.GetKeyDown(KeyCode.Return))
         {
-            menu.Credits();
+            Menu.Credits();
         }
-        else if (menuIndex == 3 && Input.GetKeyDown(KeyCode.Return))
+        else if (MenuIndex == 3 && Input.GetKeyDown(KeyCode.Return))
         {
-            menu.QuitGame();
+            Menu.QuitGame();
         }
     }
 
     public void MoveIndicatorWithKeys()
     {
-        if (menuIndex == 0)
+        if (MenuIndex == 0)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("PlayButton").transform.position.y;
             transform.position = position;
         }
-        else if (menuIndex == 1)
+        else if (MenuIndex == 1)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("OptionsButton").transform.position.y;
             transform.position = position;
         }
-        else if (menuIndex == 2)
+        else if (MenuIndex == 2)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("CreditsButton").transform.position.y;
             transform.position = position;
         }
-        else if (menuIndex == 3)
+        else if (MenuIndex == 3)
         {
             Vector3 position = transform.position;
             position.y = GameObject.Find("QuitButton").transform.position.y;
@@ -93,13 +93,13 @@ public class MainMenuIndicator : MonoBehaviour {
 
     public void CheckIndexCap()
     {
-        if(menuIndex < menuIndexMin)
+        if(MenuIndex < MenuIndexMin)
         {
-            menuIndex = menuIndexMax;
+            MenuIndex = MenuIndexMax;
         }
-        else if (menuIndex > menuIndexMax)
+        else if (MenuIndex > MenuIndexMax)
         {
-            menuIndex = menuIndexMin;
+            MenuIndex = MenuIndexMin;
         }
     }
 }

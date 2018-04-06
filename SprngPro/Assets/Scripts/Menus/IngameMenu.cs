@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IngameMenu : MonoBehaviour {
 
-    public ChangeScenes newScene;
+    public ChangeScenes NewScene;
 
     public void Options()
     {
@@ -15,6 +15,6 @@ public class IngameMenu : MonoBehaviour {
 
     public void ExitGame()
     {
-        newScene.ChangeScene(-1);
+        NewScene.ChangeScene(0);
     }
 }
