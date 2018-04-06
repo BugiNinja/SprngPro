@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class IngameMenu : MonoBehaviour {
 
+    public ChangeScenes newScene;
+
+    public void Options()
+    {
+        //Options stuff
+        Debug.Log("Options");
+    }
+
     public void ExitGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        newScene.ChangeScene(-1);
     }
 }
