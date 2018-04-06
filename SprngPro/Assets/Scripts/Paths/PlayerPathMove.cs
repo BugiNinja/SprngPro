@@ -11,6 +11,8 @@ public class PlayerPathMove : MonoBehaviour {
     int currentWayPointId = 0;
     int lastWayPointId = 0;
 
+    bool enabledMove = true;
+
     int moveDirection = 1; //1 = forward, -1 = backward 
 
     public float WalkSpeed = 20;
@@ -45,7 +47,7 @@ public class PlayerPathMove : MonoBehaviour {
     }
     void CheckMovement()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && enabledMove)
         {
             if(currentWayPointId > lastWayPointId)
             {
@@ -56,7 +58,7 @@ public class PlayerPathMove : MonoBehaviour {
             }
             moveSpeed = WalkSpeed;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && enabledMove)
         {
             if (currentWayPointId < lastWayPointId)
             {
@@ -70,6 +72,18 @@ public class PlayerPathMove : MonoBehaviour {
         else
         {
             moveSpeed = 0;
+        }
+    }
+    public void EnableMovement(bool state)
+    {
+        if (state)
+        {
+            enabledMove = true;
+
+        }
+        else
+        {
+            enabledMove = false;
         }
     }
 }
