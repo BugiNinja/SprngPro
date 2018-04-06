@@ -23,7 +23,5 @@ public class Interactable : MonoBehaviour {
         {
             Dialog.StartDiealogue(dialogue);
         }
-        
-        
     }
 }

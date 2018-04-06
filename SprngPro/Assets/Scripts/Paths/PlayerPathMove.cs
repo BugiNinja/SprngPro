@@ -4,37 +4,36 @@ using UnityEngine;
 
 public class PlayerPathMove : MonoBehaviour {
 
-    string pathName = "PlayerPath";
-    EditorPath PathToFollow;
-
     public int SpawnNodeId = 0;
-    int currentWayPointId = 0;
-    int lastWayPointId = 0;
-
-    bool enabledMove = true;
-
-    int moveDirection = 1; //1 = forward, -1 = backward 
-
     public float WalkSpeed = 20;
-    float moveSpeed = 0;
 
-    private float reachDistance = 0.6f;
+    private string pathName = "PlayerPath";
+    private EditorPath pathToFollow;
+
+    private bool enabledMove = true;
+
+    private int currentWayPointId = 0;
+    private int lastWayPointId = 0;
+
+    private int moveDirection = 1; //1 = forward, -1 = backward 
+    private float moveSpeed = 0;
+    private float reachDistance = 1f;
 
     
 
-    void Start()
+    private void Start()
     {
-        PathToFollow = GameObject.Find(pathName).GetComponent<EditorPath>();
+        pathToFollow = GameObject.Find(pathName).GetComponent<EditorPath>();
         currentWayPointId = SpawnNodeId;
         lastWayPointId = SpawnNodeId - 1;
-        transform.position = PathToFollow.nodes[currentWayPointId].position;
+        transform.position = pathToFollow.Nodes[currentWayPointId].position;
     }
 
-    void Update()
+    private void Update()
     {
         CheckMovement();
-        float distance = Vector3.Distance(PathToFollow.nodes[currentWayPointId].position, transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, PathToFollow.nodes[currentWayPointId].position, Time.deltaTime * moveSpeed);
+        float distance = Vector3.Distance(pathToFollow.Nodes[currentWayPointId].position, transform.position);
+        transform.position = Vector3.MoveTowards(transform.position, pathToFollow.Nodes[currentWayPointId].position, Time.deltaTime * moveSpeed);
 
         if (distance <= reachDistance)
         {
@@ -43,9 +42,9 @@ public class PlayerPathMove : MonoBehaviour {
             currentWayPointId += moveDirection;
 
         }
-
     }
-    void CheckMovement()
+
+    private void CheckMovement()
     {
         if (Input.GetKey(KeyCode.A) && enabledMove)
         {
@@ -74,6 +73,7 @@ public class PlayerPathMove : MonoBehaviour {
             moveSpeed = 0;
         }
     }
+
     public void EnableMovement(bool state)
     {
         if (state)

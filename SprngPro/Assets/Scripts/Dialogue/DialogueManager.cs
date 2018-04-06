@@ -5,34 +5,35 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
-    public GameObject textBox;
-
-    public Text theText;
-
+    public TextAsset dialogFile;
     public GameObject[] Characters;
-    public int speakingChar;
 
-    public TextAsset textFile;
-    public string[] textLines;
-    public List<int> dialogueStartLines;
+    private GameObject textBox;
+    private Text dialogue;
+
+    private bool isActive;
+
+    private int currentLine;
+    private int speakingChar;
+
+    private string[] dialogLines;
+    private List<int> dialogueStartLines;
 
     private PlayerPathMove pMove;
-
-    public int currentLine;
-
-    public bool isActive;
+    
+    
 
     private void Start()
     {
         pMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPathMove>();
-        if (textFile != null)
+        if (dialogFile != null)
         {
-            textLines = (textFile.text.Split('\n'));
+            dialogLines = (dialogFile.text.Split('\n'));
         }
         int  conI = 1;
-        for(int i = 0; i < textLines.Length - 1; i++)
+        for(int i = 0; i < dialogLines.Length - 1; i++)
         {
-            if (textLines[i].StartsWith("#" + conI ))
+            if (dialogLines[i].StartsWith("#" + conI ))
             {
                 dialogueStartLines.Add(i + 1);
                 conI++;
@@ -47,7 +48,7 @@ public class DialogueManager : MonoBehaviour {
             return;
         }
 
-        theText.text = textLines[currentLine];
+        dialogue.text = dialogLines[currentLine];
 
         CheckDialogue();
         if (Input.GetKeyDown(KeyCode.Return))
@@ -71,35 +72,41 @@ public class DialogueManager : MonoBehaviour {
 
     private void CheckDialogue()
     {
-        if (textLines[currentLine].StartsWith("."))
+        if (dialogLines[currentLine].StartsWith("."))
         {
-            int.TryParse(textLines[currentLine].Remove(0, 1), out speakingChar);
+            int.TryParse(dialogLines[currentLine].Remove(0, 1), out speakingChar);
             speakingChar -= 1;
             currentLine++;
             ChanceCharacter(speakingChar);
         }
-        if (textLines[currentLine].StartsWith("!"))
+        if (dialogLines[currentLine].StartsWith("!"))
         {
             DisableTextBox();
         }
+        if (dialogLines[currentLine].StartsWith("-"))
+        {
+            int choiceIndex = 0;
+            int.TryParse(dialogLines[currentLine].Remove(0, 1), out choiceIndex);
+            StartPlayerChoice(choiceIndex);
+        }
     }
     
-    public void ChanceCharacter(int speakingChar)
+    private void ChanceCharacter(int speakingChar)
     {
         DisableTextBox();
         textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer");
-        theText = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+        dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
         EnableTextBox();
     }
 
-    public void EnableTextBox()
+    private void EnableTextBox()
     {
         textBox.SetActive(true);
         isActive = true;
         pMove.EnableMovement(false);
     }
 
-    public void DisableTextBox()
+    private void DisableTextBox()
     {
         textBox.SetActive(false);
         isActive = false;
@@ -115,8 +122,13 @@ public class DialogueManager : MonoBehaviour {
     {
         if (theText != null)
         {
-            textLines = new string[1];
-            textLines = (theText.text.Split('\n'));
+            dialogLines = new string[1];
+            dialogLines = (theText.text.Split('\n'));
         }
+    }
+
+    private void StartPlayerChoice(int choice)
+    {
+        
     }
 }

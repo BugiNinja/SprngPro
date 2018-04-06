@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class EditorPath : MonoBehaviour {
 
-    public Color rayColor = Color.white;
-    public List<Transform> nodes = new List<Transform>();
-    Transform[] childTransforms;
+    public Color RayColor = Color.white;
+    public List<Transform> Nodes = new List<Transform>();
+    private Transform[] childTransforms;
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = rayColor;
+        Gizmos.color = RayColor;
         childTransforms = GetComponentsInChildren<Transform>();
-        nodes.Clear();
+        Nodes.Clear();
 
         foreach (Transform path_obj in childTransforms)
         {
             if (path_obj != this.transform)
             {
-                nodes.Add(path_obj);
+                Nodes.Add(path_obj);
             }
         }
-        for (int i = 0; i < nodes.Count; i++)
+        for (int i = 0; i < Nodes.Count; i++)
         {
-            nodes[i].name = "Node" + i;
-            Vector3 pos = nodes[i].position;
+            Nodes[i].name = "Node" + i;
+            Vector3 pos = Nodes[i].position;
             if (i > 0)
             {
-                Vector3 previous = nodes[i - 1].position;
+                Vector3 previous = Nodes[i - 1].position;
                 Gizmos.DrawLine(previous, pos);
                 Gizmos.DrawWireSphere(pos, 1);
             }

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour {
 
-    public bool inDialog;
-    public int interactableCount;
-    public List<Interactable> inter;
-    public int interactWith = 0;
+    private int interactableCount;
+    private List<Interactable> inter;
+    private int interactWith = 0;
 
-	void Start () {
-        inDialog = false;
+	private void Start () {
         interactableCount = -1;
 	}
 
-	void Update () {
+	private void Update () {
 		if(interactableCount > -1)
         {
             if (Input.GetKeyDown(KeyCode.E))
