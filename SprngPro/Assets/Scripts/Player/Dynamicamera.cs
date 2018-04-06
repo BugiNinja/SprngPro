@@ -22,7 +22,8 @@ public class Dynamicamera : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         background = GameObject.FindGameObjectWithTag("Background");
         c = gameObject.GetComponent<Camera>();
-        offset = transform.position - player.transform.position;
+        //offset = transform.position - player.transform.position;
+        offset = new Vector3(0, 5, -10);
         backgroundmin = background.GetComponent<Renderer>().bounds.min.x;
         backgroundmax = background.GetComponent<Renderer>().bounds.max.x;
     }
