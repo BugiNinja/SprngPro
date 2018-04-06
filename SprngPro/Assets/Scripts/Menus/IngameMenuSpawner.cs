@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class IngameMenuSpawner : MonoBehaviour {
 
-    public GameObject InGameMenu;
+    public GameObject inGameMenu;
     public bool PressedEsc;
 
     private void Start()
     {
         PressedEsc = false;
-        InGameMenu.SetActive(false);
+        inGameMenu.SetActive(false);
     }
 
     private void Update()
@@ -19,7 +19,7 @@ public class IngameMenuSpawner : MonoBehaviour {
         {
             if(!PressedEsc)
             {
-                InGameMenu.SetActive(true);
+                inGameMenu.SetActive(true);
                 PressedEsc = true;
                 if(Time.timeScale == 1)
                 {
@@ -32,7 +32,7 @@ public class IngameMenuSpawner : MonoBehaviour {
             }
             else
             {
-                InGameMenu.SetActive(false);
+                inGameMenu.SetActive(false);
                 PressedEsc = false;
                 Time.timeScale = 1;
             }

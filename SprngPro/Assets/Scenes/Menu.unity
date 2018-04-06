@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f2a386bd06c9b459c18de35e82dec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newScene: {fileID: 1825929212}
 --- !u!1 &445191273
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,10 +638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18915aa3a4742304baa82ef684269552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 206278292}
-  menuIndex: 0
-  menuIndexMin: 0
-  menuIndexMax: 0
+  MenuIndex: 0
+  MenuIndexMin: 0
+  MenuIndexMax: 0
 --- !u!114 &1279675594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,7 +1151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1825929211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a90ac1da84e1cc469454a02ec8c7e0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 69a6acda40130ff43b3e4fc402d4ea40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1825929213

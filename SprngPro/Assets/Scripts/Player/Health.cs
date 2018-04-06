@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public PlayerStats Stats; 
+    private PlayerStats stats; 
     Animator anim;
 
     void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         anim = this.GetComponent<Animator>();
     }
 
     void Update()
     {
-        anim.SetInteger("healthStage", Stats.HealthCurrent);
+        anim.SetInteger("healthStage", stats.HealthCurrent);
     }
 }
