@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public ChangeScenes NewScene;
+    private ChangeScenes newScene;
+
+    private void Start()
+    {
+        newScene = GameObject.Find("SceneChanger").GetComponent<ChangeScenes>();
+    }
 
     public void PlayGame()
     {
-        NewScene.ChangeScene(1);
+        newScene.ChangeScene(1);
     }
 
     public void Options()

@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class IngameMenu : MonoBehaviour {
 
-    public ChangeScenes NewScene;
+    private ChangeScenes newScene;
+
+    private void Start()
+    {
+        newScene = GameObject.Find("SceneChanger").GetComponent<ChangeScenes>();
+    }
 
     public void Options()
     {
@@ -15,6 +20,6 @@ public class IngameMenu : MonoBehaviour {
 
     public void ExitGame()
     {
-        NewScene.ChangeScene(0);
+        newScene.ChangeScene(0);
     }
 }

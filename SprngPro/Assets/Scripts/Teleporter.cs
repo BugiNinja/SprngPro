@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour {
 
-    public ChangeScenes NewScene;
+    private ChangeScenes newScene;
     public int NextSceneNumber;
+
+    private void Start()
+    {
+        newScene = GameObject.Find("SceneChanger").GetComponent<ChangeScenes>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            NewScene.ChangeScene(NextSceneNumber);
+            newScene.ChangeScene(NextSceneNumber);
         }
     }
 }

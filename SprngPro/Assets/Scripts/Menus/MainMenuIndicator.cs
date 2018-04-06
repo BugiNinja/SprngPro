@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuIndicator : MonoBehaviour {
 
-    public MainMenu Menu;
+    private MainMenu menu;
 
     public int MenuIndex;
     public int MenuIndexMin;
@@ -12,6 +12,7 @@ public class MainMenuIndicator : MonoBehaviour {
 
     private void Start()
     {
+        menu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
         MenuIndex = 0;
         MenuIndexMin = 0;
         MenuIndexMax = 3;
@@ -42,19 +43,19 @@ public class MainMenuIndicator : MonoBehaviour {
     {
         if (MenuIndex == 0 && Input.GetKeyDown(KeyCode.Return))
         {
-            Menu.PlayGame();
+            menu.PlayGame();
         }
         else if (MenuIndex == 1 && Input.GetKeyDown(KeyCode.Return))
         {
-            Menu.Options();
+            menu.Options();
         }
         else if (MenuIndex == 2 && Input.GetKeyDown(KeyCode.Return))
         {
-            Menu.Credits();
+            menu.Credits();
         }
         else if (MenuIndex == 3 && Input.GetKeyDown(KeyCode.Return))
         {
-            Menu.QuitGame();
+            menu.QuitGame();
         }
     }
 
