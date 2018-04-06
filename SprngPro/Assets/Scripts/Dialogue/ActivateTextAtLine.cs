@@ -7,16 +7,16 @@ public class ActivateTextAtLine : MonoBehaviour {
     public TextAsset theText;
 
     public int startLine;
-    public int endLine;
+    public int dialogue;
 
-    public TextBoxManager theTextBox;
+    public DialogueManager theTextBox;
 
     public bool requireButtonPress;
     private bool waitForPress;
 
 	// Use this for initialization
 	void Start () {
-        theTextBox = FindObjectOfType<TextBoxManager>();
+        theTextBox = FindObjectOfType<DialogueManager>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,6 @@ public class ActivateTextAtLine : MonoBehaviour {
         {
             theTextBox.ReloadScript(theText);
             theTextBox.currentLine = startLine;
-            theTextBox.endAtLine = endLine;
             theTextBox.EnableTextBox();
         }
 
@@ -35,10 +34,8 @@ public class ActivateTextAtLine : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            theTextBox.ReloadScript(theText);
-            theTextBox.currentLine = startLine;
-            theTextBox.endAtLine = endLine;
-            theTextBox.EnableTextBox();
+
+            theTextBox.StartDiealogue(dialogue);
         }
 
         if(other.tag == "NPC")
