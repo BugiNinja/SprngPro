@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Dynamicamera : MonoBehaviour {
 
-    GameObject player;
-    Camera c;
-    GameObject Background;
+    private GameObject player;
+    private Camera c;
+    private GameObject background;
     private Vector3 offset;
-    float backgroundmin;
-    float backgroundmax;
-    float newPositionX;
+    private float backgroundmin;
+    private float backgroundmax;
+    private float newPositionX;
+
     public float MaxSize = 7;
     public float MinSize = 3;
     public float ScaleSpeed = 0.05f;
@@ -19,11 +20,11 @@ public class Dynamicamera : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Background = GameObject.FindGameObjectWithTag("Background");
+        background = GameObject.FindGameObjectWithTag("Background");
         c = gameObject.GetComponent<Camera>();
         offset = transform.position - player.transform.position;
-        backgroundmin = Background.GetComponent<Renderer>().bounds.min.x;
-        backgroundmax = Background.GetComponent<Renderer>().bounds.max.x;
+        backgroundmin = background.GetComponent<Renderer>().bounds.min.x;
+        backgroundmax = background.GetComponent<Renderer>().bounds.max.x;
     }
 
 
