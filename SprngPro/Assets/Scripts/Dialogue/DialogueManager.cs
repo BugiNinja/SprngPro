@@ -8,7 +8,8 @@ public class DialogueManager : MonoBehaviour {
     public TextAsset dialogFile;
     public GameObject[] Characters;
 
-    private GameObject textBox;
+    public GameObject textBox;
+    private VerticalLayoutGroup textBoxPadding;
     private Text dialogue;
 
     private bool isActive;
@@ -17,15 +18,26 @@ public class DialogueManager : MonoBehaviour {
     private int speakingChar;
 
     private string[] dialogLines;
-    private List<int> dialogueStartLines;
+    public List<int> dialogueStartLines;
+
+    public bool InChoice = false;
+    private int choiceIndex;
+    public List<string> choices;
 
     private PlayerPathMove pMove;
+
+    public int choiceLeftPadding = 25;
+    private int leftPaddingDefault;
+    private int indicatorOffset = -23;
+    private GameObject indicator;
     
+
     
 
     private void Start()
     {
         pMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPathMove>();
+        indicator = GameObject.Find("Player/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue/Indicator");
         if (dialogFile != null)
         {
             dialogLines = (dialogFile.text.Split('\n'));
@@ -43,18 +55,25 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update()
     {
+        if (InChoice)
+        {
+            Highlight(choiceIndex);
+            return;
+        }
         if (!isActive)
         {
             return;
         }
 
-        dialogue.text = dialogLines[currentLine];
+        
 
         CheckDialogue();
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (!InChoice)
         {
-            NextLine();
+            dialogue.text = dialogLines[currentLine];
         }
+        
+        
     }
 
     public void StartDiealogue(int DialogueIndex)
@@ -79,22 +98,37 @@ public class DialogueManager : MonoBehaviour {
             currentLine++;
             ChanceCharacter(speakingChar);
         }
-        if (dialogLines[currentLine].StartsWith("!"))
+        else if (dialogLines[currentLine].StartsWith("!"))
         {
             DisableTextBox();
         }
-        if (dialogLines[currentLine].StartsWith("-"))
+        else if (dialogLines[currentLine].StartsWith("-"))
         {
             int choiceIndex = 0;
             int.TryParse(dialogLines[currentLine].Remove(0, 1), out choiceIndex);
+            ChanceCharacter(0);
             StartPlayerChoice(choiceIndex);
+        }
+        else if (dialogLines[currentLine].StartsWith("+"))
+        {
+            int i = 1;
+            while (!dialogLines[currentLine + i].StartsWith("_"))
+            {
+                i++;
+            }
+            currentLine += i+1;
+            CheckDialogue();
+        }
+        else if (dialogLines[currentLine].StartsWith("_"))
+        {
+            currentLine++;
         }
     }
     
     private void ChanceCharacter(int speakingChar)
     {
         DisableTextBox();
-        textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer");
+        textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
         dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
         EnableTextBox();
     }
@@ -117,6 +151,10 @@ public class DialogueManager : MonoBehaviour {
     {
         return isActive;
     }
+    public bool InChoices()
+    {
+        return InChoice;
+    }
 
     public void ReloadScript(TextAsset theText)
     {
@@ -129,6 +167,63 @@ public class DialogueManager : MonoBehaviour {
 
     private void StartPlayerChoice(int choice)
     {
-        
+        InChoice = true;
+        choices.Clear();
+
+        textBoxPadding = textBox.GetComponent<VerticalLayoutGroup>();
+        leftPaddingDefault = textBoxPadding.padding.left;
+        textBoxPadding.padding.left = leftPaddingDefault + choiceLeftPadding;
+
+        choiceIndex = 0;
+        int i = 1;
+        do
+        {
+            if (dialogLines[currentLine + i].StartsWith("+"))
+            {
+                choices.Add(dialogLines[currentLine + i + 1]);
+            }
+            i++;
+        } while (!dialogLines[currentLine + i].StartsWith("-"));
+        currentLine += i + 1;
+        string choiceText = choices[0];
+        for (i = 1; i < choices.Count; i++)
+        {
+            choiceText += "\n" + choices[i];
+        }
+        dialogue.text = choiceText;
+    }
+
+    public void SwitchChoice(int amount)
+    {
+        choiceIndex += amount;
+        if (choices.Count - 1 < choiceIndex)
+        {
+            choiceIndex = 0;
+        }
+        else if (choiceIndex < 0)
+        {
+            choiceIndex = choices.Count - 1;
+        }
+
+    }
+    public void PickChoice()
+    {
+        //GiveChoise
+
+        InChoice = false;
+        textBoxPadding.padding.left = leftPaddingDefault;
+        indicator.SetActive(false);
+
+        while (!dialogLines[currentLine].StartsWith("+" + (choiceIndex+1)) && !dialogLines[currentLine].StartsWith("+0"))
+        {
+            currentLine++;
+        }
+        currentLine++;
+    }
+    private void Highlight(int index)
+    {
+        indicator.SetActive(true);
+        RectTransform rt = indicator.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -dialogue.fontSize/2 + indicatorOffset * index);
     }
 }

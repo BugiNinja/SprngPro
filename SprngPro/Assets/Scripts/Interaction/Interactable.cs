@@ -15,7 +15,11 @@ public class Interactable : MonoBehaviour {
 
 	public void Interact()
     {
-        if (Dialog.InDialog())
+        if (Dialog.InChoices())
+        {
+            Dialog.PickChoice();
+        }
+        else if (Dialog.InDialog())
         {
             Dialog.NextLine();
         }

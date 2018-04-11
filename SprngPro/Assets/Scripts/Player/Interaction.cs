@@ -5,10 +5,12 @@ using UnityEngine;
 public class Interaction : MonoBehaviour {
 
     private int interactableCount;
-    private List<Interactable> inter;
+    public List<Interactable> inter;
     private int interactWith = 0;
+    public DialogueManager Dialog;
 
-	private void Start () {
+    private void Start () {
+        Dialog = FindObjectOfType<DialogueManager>();
         interactableCount = -1;
 	}
 
@@ -19,14 +21,31 @@ public class Interaction : MonoBehaviour {
             {
                 inter[interactWith].Interact();
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && interactableCount > 0)
+            if (Dialog.InChoices())
             {
-                SwitchInteractable(-1);
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    
+                    Dialog.SwitchChoice(1);
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    Dialog.SwitchChoice(-1);
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && interactableCount > 0)
-            {
-                SwitchInteractable(1);
+            else if (Dialog.InDialog())
+            { 
+
+                if (Input.GetKeyDown(KeyCode.DownArrow) && interactableCount > 0)
+                {
+                    SwitchInteractable(-1);
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow) && interactableCount > 0)
+                {
+                    SwitchInteractable(1);
+                }
             }
+            
         }
 	}
 

@@ -63,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1674940217451974
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4349944035307880
 Transform:
   m_ObjectHideFlags: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113b72e04f4a30247ab4e753acb23bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: 1
+  dialogue: 2
   Dialog: {fileID: 0}
 --- !u!114 &114725479311755290
 MonoBehaviour:
@@ -469,7 +469,7 @@ RectTransform:
   m_GameObject: {fileID: 1674940217451974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01635164, y: 0.01635164, z: 0.0408791}
+  m_LocalScale: {x: 0.08, y: 0.1, z: 0.0408791}
   m_Children:
   - {fileID: 224134794969557964}
   m_Father: {fileID: 4349944035307880}
