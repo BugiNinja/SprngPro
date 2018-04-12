@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 224961992541691706}
   - component: {fileID: 222559735656166910}
   - component: {fileID: 114729534143913028}
-  - component: {fileID: 114126170120764614}
   - component: {fileID: 114872308008499142}
   m_Layer: 5
   m_Name: IngameMenu
@@ -127,7 +126,6 @@ GameObject:
   - component: {fileID: 224243581893783982}
   - component: {fileID: 222292742512777606}
   - component: {fileID: 114116575190786340}
-  - component: {fileID: 114171731878855846}
   m_Layer: 5
   m_Name: Indicator
   m_TagString: Untagged
@@ -162,17 +160,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114126170120764614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401851920145556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9ba9a23abefd9e4a9f9c37236505987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114136133354280808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,18 +193,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: MENU
---- !u!114 &114171731878855846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1852975846851186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b9ccc2a2d891e429095805943ad94c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InGameMenu: {fileID: 0}
 --- !u!114 &114286224254158234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,7 +325,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114126170120764614}
+      - m_Target: {fileID: 0}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -402,7 +377,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114126170120764614}
+      - m_Target: {fileID: 0}
         m_MethodName: Options
         m_Mode: 1
         m_Arguments:

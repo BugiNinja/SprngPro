@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour {
     private int optionCount;
     public int[] MenuIndex;
     public int N;
-
     public Vector3 OptionPosition;
 
 	void Start () {
@@ -74,6 +73,10 @@ public class Menu : MonoBehaviour {
             if (OptionName == "CreditsButton")
             {
                 Option.Credits();
+            }
+            if (OptionName == "ExitButton")
+            {
+                Option.ExitGame();
             }
             if (OptionName == "QuitButton")
             {
