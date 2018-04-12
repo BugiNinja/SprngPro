@@ -10,27 +10,57 @@ public class EditorPath : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = RayColor;
-        childTransforms = GetComponentsInChildren<Transform>();
-        Nodes.Clear();
+        if (childTransforms.Length - 1 != transform.childCount || IsPathObjectSelected())
+        {
+            Gizmos.color = RayColor;
+            childTransforms = GetComponentsInChildren<Transform>();
+            Nodes.Clear();
+            foreach (Transform path_obj in childTransforms)
+            {
+                if (path_obj != this.transform)
+                {
+                    Nodes.Add(path_obj);
+                }
+            }
 
-        foreach (Transform path_obj in childTransforms)
-        {
-            if (path_obj != this.transform)
+            for (int i = 0; i < Nodes.Count; i++)
             {
-                Nodes.Add(path_obj);
+                Nodes[i].name = "Node" + i;
+                Vector3 pos = Nodes[i].position;
+                if (i > 0)
+                {
+                    Vector3 previous = Nodes[i - 1].position;
+                    Gizmos.DrawLine(previous, pos);
+                    Gizmos.DrawWireSphere(pos, 1);
+                }
             }
         }
-        for (int i = 0; i < Nodes.Count; i++)
+    }
+    private bool IsPathObjectSelected()
+    {
+        if (UnityEditor.Selection.activeTransform != null)
         {
-            Nodes[i].name = "Node" + i;
-            Vector3 pos = Nodes[i].position;
-            if (i > 0)
+            Transform editorSelection = UnityEditor.Selection.activeTransform;
+            if (editorSelection.Equals(this.transform))
             {
-                Vector3 previous = Nodes[i - 1].position;
-                Gizmos.DrawLine(previous, pos);
-                Gizmos.DrawWireSphere(pos, 1);
+                return true;
+            }
+            if (editorSelection.parent != null)
+            {
+                if (editorSelection.parent.Equals(this.transform))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
+        return false;
     }
 }
