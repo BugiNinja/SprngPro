@@ -10,10 +10,11 @@ public class EditorPath : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
+        childTransforms = GetComponentsInChildren<Transform>();
         if (childTransforms.Length - 1 != transform.childCount || IsPathObjectSelected())
         {
             Gizmos.color = RayColor;
-            childTransforms = GetComponentsInChildren<Transform>();
+            
             Nodes.Clear();
             foreach (Transform path_obj in childTransforms)
             {
