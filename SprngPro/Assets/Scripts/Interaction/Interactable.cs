@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour {
 
     public int dialogue;
-    public DialogueManager Dialog;
+    private DialogueManager Dialog;
 
     void Start () {
         Dialog = FindObjectOfType<DialogueManager>();
@@ -27,5 +27,14 @@ public class Interactable : MonoBehaviour {
         {
             Dialog.StartDiealogue(dialogue);
         }
+    }
+
+    public void Dissable()
+    {
+        gameObject.SetActive(false);
+    }
+    public void SwitchDialog(int dialogueIndex)
+    {
+        dialogue = dialogueIndex;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour {
 
     public TextAsset dialogFile;
+    public ProgressManager pm;
     public GameObject[] Characters;
 
     public GameObject textBox;
@@ -21,6 +22,7 @@ public class DialogueManager : MonoBehaviour {
     public List<int> dialogueStartLines;
 
     public bool InChoice = false;
+    private int questionIndex;
     private int choiceIndex;
     public List<string> choices;
 
@@ -30,12 +32,17 @@ public class DialogueManager : MonoBehaviour {
     private int leftPaddingDefault;
     private int indicatorOffset = -23;
     private GameObject indicator;
-    
+
+    public bool UseAutoText = false;
+    public float TextSpeed = 0.1f;
+    private bool Autowrite = false;
+    private IEnumerator courutine;
 
     
 
     private void Start()
     {
+        pm = FindObjectOfType<ProgressManager>();
         pMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPathMove>();
         indicator = GameObject.Find("Player/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue/Indicator");
         if (dialogFile != null)
@@ -51,6 +58,7 @@ public class DialogueManager : MonoBehaviour {
                 conI++;
             }
         }
+        Characters = pm.GetCharacters();
     }
 
     private void Update()
@@ -65,12 +73,28 @@ public class DialogueManager : MonoBehaviour {
             return;
         }
 
-        
 
-        CheckDialogue();
+        if (!Autowrite)
+        {
+            CheckDialogue();
+        }
+        
         if (!InChoice)
         {
-            dialogue.text = dialogLines[currentLine];
+            if (UseAutoText)
+            {
+                if (!Autowrite)
+                {
+                    Autowrite = true;
+                    courutine = Print(dialogLines[currentLine]);
+                    StartCoroutine(courutine);
+                }
+            }
+            else
+            {
+                dialogue.text = dialogLines[currentLine];
+            }
+            
         }
         
         
@@ -86,7 +110,7 @@ public class DialogueManager : MonoBehaviour {
     public void NextLine()
     {
         currentLine += 1;
-        
+        Autowrite = false;
     }
 
     private void CheckDialogue()
@@ -165,11 +189,11 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    private void StartPlayerChoice(int choice)
+    private void StartPlayerChoice(int questionIndex)
     {
         InChoice = true;
         choices.Clear();
-
+        this.questionIndex = questionIndex;
         textBoxPadding = textBox.GetComponent<VerticalLayoutGroup>();
         leftPaddingDefault = textBoxPadding.padding.left;
         textBoxPadding.padding.left = leftPaddingDefault + choiceLeftPadding;
@@ -208,7 +232,7 @@ public class DialogueManager : MonoBehaviour {
     }
     public void PickChoice()
     {
-        //GiveChoise
+        pm.ReturnChoice(questionIndex, choiceIndex+1);
 
         InChoice = false;
         textBoxPadding.padding.left = leftPaddingDefault;
@@ -225,5 +249,16 @@ public class DialogueManager : MonoBehaviour {
         indicator.SetActive(true);
         RectTransform rt = indicator.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -dialogue.fontSize/2 + indicatorOffset * index);
+    }
+
+    public IEnumerator Print(string text)
+    {
+        dialogue.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            dialogue.text += letter;
+            yield return new WaitForSeconds(TextSpeed);
+        }
+        
     }
 }
