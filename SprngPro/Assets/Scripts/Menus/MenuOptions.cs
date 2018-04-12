@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
-
+public class MenuOptions : MonoBehaviour {
+    
     private ChangeScenes newScene;
 
     private void Start()
@@ -15,6 +14,12 @@ public class MainMenu : MonoBehaviour {
     public void PlayGame()
     {
         newScene.ChangeScene(1);
+    }
+
+    public void Continue()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Options()

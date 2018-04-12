@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class IngameMenuSpawner : MonoBehaviour {
 
-    public GameObject inGameMenu;
-    public bool PressedEsc;
+    public Menu menu;
+    private bool pressedEsc;
 
     private void Start()
     {
-        PressedEsc = false;
-        inGameMenu.SetActive(false);
+        menu = GameObject.Find("Menu").GetComponent<Menu>();
+        pressedEsc = false;
+        menu.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        SpawnMenu();
+    }
+
+    public void SpawnMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!PressedEsc)
+            if (!pressedEsc)
             {
-                inGameMenu.SetActive(true);
-                PressedEsc = true;
-                if(Time.timeScale == 1)
+                menu.gameObject.SetActive(true);
+                pressedEsc = true;
+                if (Time.timeScale == 1)
                 {
                     Time.timeScale = 0;
                 }
@@ -32,8 +38,8 @@ public class IngameMenuSpawner : MonoBehaviour {
             }
             else
             {
-                inGameMenu.SetActive(false);
-                PressedEsc = false;
+                menu.gameObject.SetActive(false);
+                pressedEsc = false;
                 Time.timeScale = 1;
             }
         }
