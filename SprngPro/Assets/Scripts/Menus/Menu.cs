@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour {
 
-    public MenuOptions Option;
+    public MenuOptions Option; //BACK BUTTON EI TOIMI VIELÄ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     public string OptionName;
     private int optionCount;
@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour {
     public int N;
     public Vector3 OptionPosition;
 
-	void Start () {
+	void Awake () {
         Option = gameObject.GetComponent<MenuOptions>();
         optionCount = transform.GetChild(0).childCount;
         MenuIndex = new int[optionCount - 1];
@@ -73,6 +73,10 @@ public class Menu : MonoBehaviour {
             if (OptionName == "CreditsButton")
             {
                 Option.Credits();
+            }
+            if (OptionName == "BackButton")
+            {
+                Option.Back();
             }
             if (OptionName == "ExitButton")
             {
