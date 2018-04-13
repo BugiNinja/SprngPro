@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class MenuActivator : MonoBehaviour {
 
-    public Menu IngameMenu;
+    public Menu MainMenu;
     public Menu OptionsMenu;
     public bool MenuActivated;
     public bool OptionsActivated;
     public bool Activation;
 
     void Start() {
-        IngameMenu = GameObject.Find("Menu").GetComponent<Menu>();
+        MainMenu = GameObject.Find("Menu").GetComponent<Menu>();
         OptionsMenu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
         MenuActivated = Activation;
         OptionsActivated = false;
-        IngameMenu.gameObject.SetActive(Activation);
+        MainMenu.gameObject.SetActive(Activation);
         OptionsMenu.gameObject.SetActive(false);
     }
 
     void Update() {
-        ActivateIngameMenu();
-        ActivateOptionsMenu();
-
-        if (MenuActivated)//TÄSSÄ MÄTTÄÄ... kun painaa OPTIONS, ingamemenu ensin deaktivoituu ja sitten aktivoituu. RATKAISE!
+        if (Input.GetKeyDown(KeyCode.Escape) && !OptionsActivated)
+        {
+            ActivateMainMenu();
+        }
+        if (MenuActivated)
         {
             OptionsMenu.gameObject.SetActive(false);
-            IngameMenu.gameObject.SetActive(true);
+            MainMenu.gameObject.SetActive(true);
         }
         if (!MenuActivated)
         {
-            IngameMenu.gameObject.SetActive(false);
+            MainMenu.gameObject.SetActive(false);
         }
+        if (OptionsActivated)
+        {
+            ActivateOptionsMenu();
 
+            if (Input.GetKeyDown(KeyCode.Escape) ||
+                Input.GetKeyDown(KeyCode.Return))
+            {
+                CloseOptionsMenu();
+            }
+        }
         if (OptionsActivated || MenuActivated)
         {
             Time.timeScale = 0;
@@ -43,38 +53,29 @@ public class MenuActivator : MonoBehaviour {
         }
     }
 
-    void ActivateIngameMenu()
+    void ActivateMainMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!MenuActivated)
         {
-            if (!MenuActivated)
-            {
-                MenuActivated = true;
-            }
-            else
-            {
-                MenuActivated = Activation;
-            }
+            MenuActivated = true;
+        }
+        else
+        {
+            MenuActivated = Activation;
         }
     }
 
     void ActivateOptionsMenu()
     {
-        if (OptionsActivated)
-        {
-            IngameMenu.gameObject.SetActive(false);
-            OptionsMenu.gameObject.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) ||
-    Input.GetKeyDown(KeyCode.Return))
-        {
-            if (OptionsActivated)
-            {
-                OptionsActivated = false;
-                OptionsMenu.gameObject.SetActive(false);
-                MenuActivated = true;
-                IngameMenu.gameObject.SetActive(true);
-            }
-        }
+        MainMenu.gameObject.SetActive(false);
+        OptionsMenu.gameObject.SetActive(true);
+    }
+
+    void CloseOptionsMenu()
+    {
+        OptionsActivated = false;
+        OptionsMenu.gameObject.SetActive(false);
+        MenuActivated = true;
+        MainMenu.gameObject.SetActive(true);
     }
 }
