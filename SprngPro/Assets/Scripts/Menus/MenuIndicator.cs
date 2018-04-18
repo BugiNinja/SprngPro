@@ -7,7 +7,7 @@ public class MenuIndicator : MonoBehaviour {
     private Menu menu;
 
     void Start () {
-        menu = GameObject.Find("Menu").GetComponent<Menu>();
+        menu = GameObject.FindGameObjectWithTag("Menu").GetComponent<Menu>();
     }
 
 	void Update () {

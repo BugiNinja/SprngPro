@@ -34,6 +34,11 @@ public class MenuOptions : MonoBehaviour {
         Debug.Log("Credits");
     }
 
+    public void Back()
+    {
+        activator.OptionsActivated = false;
+    }
+
     public void ExitGame()
     {
         newScene.ChangeScene(0);

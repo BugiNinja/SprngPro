@@ -8,14 +8,14 @@ public class MenuActivator : MonoBehaviour {
     public Menu OptionsMenu;
     public bool MenuActivated;
     public bool OptionsActivated;
-    public bool Activation;
+    public bool MenuLockedInScreen;
 
     void Start() {
         MainMenu = GameObject.Find("Menu").GetComponent<Menu>();
         OptionsMenu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
-        MenuActivated = Activation;
+        MenuActivated = MenuLockedInScreen;
         OptionsActivated = false;
-        MainMenu.gameObject.SetActive(Activation);
+        MainMenu.gameObject.SetActive(MenuLockedInScreen);
         OptionsMenu.gameObject.SetActive(false);
     }
 
@@ -29,7 +29,7 @@ public class MenuActivator : MonoBehaviour {
             OptionsMenu.gameObject.SetActive(false);
             MainMenu.gameObject.SetActive(true);
         }
-        if (!MenuActivated)
+        else
         {
             MainMenu.gameObject.SetActive(false);
         }
@@ -37,8 +37,8 @@ public class MenuActivator : MonoBehaviour {
         {
             ActivateOptionsMenu();
 
-            if (Input.GetKeyDown(KeyCode.Escape) ||
-                Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Escape) /*||
+                Input.GetKeyDown(KeyCode.Return)*/)
             {
                 CloseOptionsMenu();
             }
@@ -61,7 +61,7 @@ public class MenuActivator : MonoBehaviour {
         }
         else
         {
-            MenuActivated = Activation;
+            MenuActivated = MenuLockedInScreen;
         }
     }
 
