@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Menu : MonoBehaviour {
 
-    public MenuOptions Option; //BACK BUTTON EI TOIMI VIELÄ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public MenuOptions Option;
 
     public string OptionName;
     private int optionCount;
@@ -12,13 +10,19 @@ public class Menu : MonoBehaviour {
     public int N;
     public Vector3 OptionPosition;
 
+    public int SliderNum;
+
 	void Awake () {
         Option = gameObject.GetComponent<MenuOptions>();
+
         optionCount = transform.GetChild(0).childCount;
         MenuIndex = new int[optionCount - 1];
         N = 0;
+
         OptionName = transform.GetChild(0).GetChild(N).name;
         OptionPosition = transform.GetChild(0).Find(OptionName).position;
+
+        SliderNum = 0;
     }
 
 	void Update () {
@@ -86,6 +90,23 @@ public class Menu : MonoBehaviour {
             {
                 Option.QuitGame();
             }
+        }
+
+        if (OptionName == "MasterSlider")
+        {
+            SliderNum = 1;
+        }
+        if (OptionName == "MusicSlider")
+        {
+            SliderNum = 2;
+        }
+        if (OptionName == "SoundSlider")
+        {
+            SliderNum = 3;
+        }
+        if (N > 2)
+        {
+            SliderNum = 0;
         }
     }
 }

@@ -13,7 +13,7 @@ public class PlayerPathMove : MonoBehaviour {
     private bool enabledMove = true;
 
     private int currentWayPointId = 0;
-    private int lastWayPointId = 0;
+    private int lastWayPointId = 0; //Tallennukseen
 
     private int moveDirection = 1; //1 = forward, -1 = backward 
     private float moveSpeed = 0;
