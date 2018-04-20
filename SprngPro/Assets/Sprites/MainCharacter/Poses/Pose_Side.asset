@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: Pose_Side
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: MainCharBones/Torso_1
+    localPosition: {x: -1.193501, y: -0.4346726, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.69581234, w: 0.71822363}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2
+    localPosition: {x: 1.0352802, y: 0.00000011920929, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.017057544, w: 0.99985456}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3
+    localPosition: {x: 0.82592416, y: 1.1641532e-10, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.0037262426, w: 0.99999315}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/Head
+    localPosition: {x: 1.1481655, y: 0.000000018803007, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.01859636, w: 0.9998271}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor
+    localPosition: {x: 0.34939405, y: 0.15093656, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.7610538, w: 0.6486888}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1
+    localPosition: {x: 0.19589464, y: 0.031921104, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.50173414, w: 0.86502194}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1/ArmFront_2
+    localPosition: {x: 0.9435117, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.17421731, w: 0.9847073}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1/ArmFront_2/ArmFront_3
+    localPosition: {x: 1.3180522, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.065757215, w: 0.99783564}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmBackAnchor
+    localPosition: {x: 0.2180759, y: 0.15105161, z: 0}
+    localRotation: {x: -0, y: -0, z: -0.76946867, w: 0.63868463}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1
+    localPosition: {x: 0.07481834, y: -0.04484891, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.65479356, w: 0.75580776}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1/ArmBack_2
+    localPosition: {x: 0.9173177, y: -0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.11013333, w: 0.99391687}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1/ArmBack_2/ArmBack_3
+    localPosition: {x: 1.2729863, y: -0.00000006426126, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.008134544, w: 0.999967}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegFront_1
+    localPosition: {x: -0.095681176, y: 0.027974874, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9994921, w: 0.031869724}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegFront_1/LegFront_2
+    localPosition: {x: 1.7776481, y: -0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.0071214885, w: 0.99997467}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegFront_1/LegFront_2/LegFront_3
+    localPosition: {x: 1.5996187, y: -0.000000045038178, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.06854358, w: 0.9976482}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegBack_1
+    localPosition: {x: -0.09552115, y: -0.07965473, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9999937, w: 0.0035748456}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegBack_1/LegBack_2
+    localPosition: {x: 1.8051226, y: -0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.032121953, w: 0.999484}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: MainCharBones/Torso_1/LegBack_1/LegBack_2/LegBack_3
+    localPosition: {x: 1.5805721, y: 0.00000005797483, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.073543064, w: 0.99729204}
+    localScale: {x: 1, y: 1, z: 1}
