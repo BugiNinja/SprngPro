@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MenuActivator : MonoBehaviour {
-
+public class MenuActivator : MonoBehaviour
+{
     public Menu MainMenu;
     public Menu OptionsMenu;
     public bool MenuActivated;
     public bool OptionsActivated;
     public bool MenuLockedInScreen;
 
-    void Start() {
+    private void Awake()
+    {
         MainMenu = GameObject.Find("Menu").GetComponent<Menu>();
         OptionsMenu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
         MenuActivated = MenuLockedInScreen;
@@ -19,30 +18,29 @@ public class MenuActivator : MonoBehaviour {
         OptionsMenu.gameObject.SetActive(false);
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape) && !OptionsActivated)
-        {
-            ActivateMainMenu();
-        }
+    void Update()
+    {
+        ActivateMainMenu();
+        ActivateOptionsMenu();
+
         if (MenuActivated)
         {
-            OptionsMenu.gameObject.SetActive(false);
             MainMenu.gameObject.SetActive(true);
         }
         else
         {
             MainMenu.gameObject.SetActive(false);
         }
+
         if (OptionsActivated)
         {
-            ActivateOptionsMenu();
-
-            if (Input.GetKeyDown(KeyCode.Escape) /*||
-                Input.GetKeyDown(KeyCode.Return)*/)
-            {
-                CloseOptionsMenu();
-            }
+            OptionsMenu.gameObject.SetActive(true);
         }
+        else
+        {
+            OptionsMenu.gameObject.SetActive(false);
+        }
+
         if (OptionsActivated || MenuActivated)
         {
             Time.timeScale = 0;
@@ -55,27 +53,31 @@ public class MenuActivator : MonoBehaviour {
 
     void ActivateMainMenu()
     {
-        if (!MenuActivated)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            MenuActivated = true;
-        }
-        else
-        {
-            MenuActivated = MenuLockedInScreen;
+            if (!MenuActivated && !OptionsActivated)
+            {
+                MenuActivated = true;
+            }
+            else if (MenuActivated)
+            {
+                MenuActivated = MenuLockedInScreen;
+            }
         }
     }
 
     void ActivateOptionsMenu()
     {
-        MainMenu.gameObject.SetActive(false);
-        OptionsMenu.gameObject.SetActive(true);
-    }
-
-    void CloseOptionsMenu()
-    {
-        OptionsActivated = false;
-        OptionsMenu.gameObject.SetActive(false);
-        MenuActivated = true;
-        MainMenu.gameObject.SetActive(true);
+        if (OptionsActivated)
+        {
+            MenuActivated = false;
+            MainMenu.gameObject.SetActive(false);
+            OptionsMenu.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && OptionsActivated)
+        {
+            OptionsActivated = false;
+            MenuActivated = true;
+        }
     }
 }

@@ -13,6 +13,7 @@ public class MenuIndicator : MonoBehaviour {
 	void Update () {
         Vector3 position = transform.position;
         position.y = menu.OptionPosition.y;
+        position.x = menu.OptionPosition.x - 10;
         transform.position = position;
     }
 }

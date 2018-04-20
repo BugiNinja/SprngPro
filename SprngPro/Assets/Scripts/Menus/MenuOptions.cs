@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MenuOptions : MonoBehaviour {
 
@@ -30,13 +28,13 @@ public class MenuOptions : MonoBehaviour {
 
     public void Credits()
     {
-        //Code here...
         Debug.Log("Credits");
     }
 
     public void Back()
     {
         activator.OptionsActivated = false;
+        activator.MenuActivated = true;
     }
 
     public void ExitGame()

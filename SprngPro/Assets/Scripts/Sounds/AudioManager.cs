@@ -1,17 +1,28 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour {
 
     public Sound[] Sounds;
     public Music[] Tracks;
     public MasterVolume Master;
+    private Sliders slider;
+
+    public float MasterVol;
+    public float MusicVol;
+    public float SoundVol;
 
     public static AudioManager Instance;
 
     void Awake()
     {
+        slider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Sliders>();
+
+        MasterVol = Master.Volume;
+        MusicVol = Master.MusicVolume;
+        SoundVol = Master.SoundVolume;
+
         if(Instance == null)
         {
             Instance = this;
@@ -52,6 +63,10 @@ public class AudioManager : MonoBehaviour {
 
     private void Update()
     {
+        MasterVol = Master.Volume;
+        MusicVol = Master.MusicVolume;
+        SoundVol = Master.SoundVolume;
+
         foreach (Music m in Tracks)
         {
             m.Source.volume = m.Volume * Master.Volume * Master.MusicVolume;
@@ -79,12 +94,12 @@ public class AudioManager : MonoBehaviour {
     {
         Master.Volume = newVolume;
     }
-    public void AdjustSoundVolume(float newVolume)
-    {
-        Master.SoundVolume = newVolume;
-    }
     public void AdjustMusicVolume(float newVolume)
     {
         Master.MusicVolume = newVolume;
+    }
+    public void AdjustSoundVolume(float newVolume)
+    {
+        Master.SoundVolume = newVolume;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgressManager : MonoBehaviour {
     public GameObject[] Characters;
     public Interactable[] InteractableObjects;
-    public bool[] Triggers = new bool[10];
+    public bool[] Triggers = new bool[10]; //Tämä tallennukseen
     public Dictionary<string, int> Inventory = new Dictionary<string, int>();
 
     void Start()

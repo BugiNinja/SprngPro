@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour {
     private bool isDead;
 
     private int healthMax;
-    public int HealthCurrent;
+    public int HealthCurrent; //Tallennukseen
 
 	void Start () {
         deathScreen = GameObject.Find("DeathScreen");
