@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: Blacksmith_Bones/Torso_1
+    localPosition: {x: -0.65415, y: 0.7407155, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.69695973, w: 0.71711034}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2
+    localPosition: {x: 1.0238854, y: 0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.047465704, w: 0.9988729}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3
+    localPosition: {x: 1.131136, y: -0.0000000069584303, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.036286633, w: 0.9993414}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/Head
+    localPosition: {x: 1.3837508, y: -0.000000010404619, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.25386313, w: 0.9672402}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor
+    localPosition: {x: 0.5959924, y: 0.8991211, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.938431, w: 0.3454666}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1
+    localPosition: {x: 0.5405349, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.39315528, w: 0.91947216}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1/ArmFront_2
+    localPosition: {x: 1.8691175, y: 0.00000017881393, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.34234312, w: 0.9395751}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmFrontAnchor/ArmFront_1/ArmFront_2/ArmFront_3
+    localPosition: {x: 1.4217094, y: 0.0000004172325, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.15003796, w: 0.9886803}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmBackAnchor
+    localPosition: {x: 0.08836752, y: 0.08597577, z: 0}
+    localRotation: {x: -0, y: -0, z: -0.8203697, w: 0.5718335}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1
+    localPosition: {x: 0.325472, y: 0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.41000733, w: 0.91208225}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1/ArmBack_2
+    localPosition: {x: 1.3620992, y: -0.000000029802322, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.30576578, w: 0.9521068}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1/ArmBack_2/ArmBack_3
+    localPosition: {x: 1.62441, y: -0.000000059604645, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.18537505, w: 0.98266786}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/Torso_2/Torso_3/ArmBackAnchor/ArmBack_1/ArmBack_2/ArmBack_3/ArmBack_4
+    localPosition: {x: 0.47240785, y: -0.000000007450581, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.51136667, w: 0.85936266}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegFront_1
+    localPosition: {x: -0.6354536, y: 0.95926493, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.9995782, w: 0.029044177}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegFront_1/LegFront_2
+    localPosition: {x: 2.4666412, y: 0.000000007450581, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.030097082, w: 0.999547}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegFront_1/LegFront_2/LegFront_3
+    localPosition: {x: 2.7996054, y: -0.000000032800017, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.07245542, w: 0.99737173}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegBack_1
+    localPosition: {x: -0.6178331, y: -0.2886932, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.9996976, w: 0.02458967}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegBack_1/LegBack_2
+    localPosition: {x: 2.4786246, y: 0.00000008940697, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.0038780975, w: 0.9999925}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Blacksmith_Bones/Torso_1/LegBack_1/LegBack_2/LegBack_3
+    localPosition: {x: 2.729053, y: -0.00000007602688, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.043502793, w: 0.9990533}
+    localScale: {x: 1, y: 1, z: 1}
