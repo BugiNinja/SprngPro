@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour {
     public List<int> dialogueStartLines;
 
     public bool InChoice = false;
-    private int questionIndex;
     private int choiceIndex;
     public List<string> choices;
 
@@ -63,6 +62,10 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update()
     {
+        if(Characters != null)
+        {
+            Characters = pm.GetCharacters();
+        }
         if (InChoice)
         {
             Highlight(choiceIndex);
@@ -128,10 +131,15 @@ public class DialogueManager : MonoBehaviour {
         }
         else if (dialogLines[currentLine].StartsWith("-"))
         {
+            ChanceCharacter(0);
+            StartPlayerChoice();
+        }
+        else if (dialogLines[currentLine].StartsWith("?"))
+        {
             int choiceIndex = 0;
             int.TryParse(dialogLines[currentLine].Remove(0, 1), out choiceIndex);
-            ChanceCharacter(0);
-            StartPlayerChoice(choiceIndex);
+            pm.ReturnTrigger(choiceIndex);
+            currentLine++;
         }
         else if (dialogLines[currentLine].StartsWith("+"))
         {
@@ -189,11 +197,10 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    private void StartPlayerChoice(int questionIndex)
+    private void StartPlayerChoice()
     {
         InChoice = true;
         choices.Clear();
-        this.questionIndex = questionIndex;
         textBoxPadding = textBox.GetComponent<VerticalLayoutGroup>();
         leftPaddingDefault = textBoxPadding.padding.left;
         textBoxPadding.padding.left = leftPaddingDefault + choiceLeftPadding;
@@ -232,7 +239,6 @@ public class DialogueManager : MonoBehaviour {
     }
     public void PickChoice()
     {
-        pm.ReturnChoice(questionIndex, choiceIndex+1);
 
         InChoice = false;
         textBoxPadding.padding.left = leftPaddingDefault;
