@@ -4,7 +4,7 @@ var arrDialog;
 var startinglines;
 var currentLine = 0;
 var Triggers;
-var Characters = ["Player", "Pahapoika", "Kauppias"];
+var Characters = ["Player","Satunnainen", "Pahapoika", "Kauppias", "Seppa"];
 var currentDialog;
 
 function init() {
@@ -305,17 +305,49 @@ function initDialog(selectedDialog) {
                         cl++;
                     }
                     cl++;
-                    a = arrDialog[cl].charAt(1);
-                    var char = TryParseInt(a, 0);
-                    cl++;
                     if (qn == 1) {
-                        AddChoicesWC(arrDialog[currentLine], arrDialog[cl], char);
-                    } else {
                         if (arrDialog[cl].indexOf("!") == 0 || arrDialog[cl].indexOf("!") == 0) {
-                            AddChoiceWC(ChoiceCount, arrDialog[currentLine], "!", char)
+                            AddChoicesWC(arrDialog[currentLine], "!", char);
+                            RemoveLineFromChoices(1, ChoiceCount);
+                            EndDialog(1, ChoiceCount);
+                            cl++;
+                        }
+                        else if (arrDialog[cl].indexOf("?") == 0) {
+                            AddChoicesWC(arrDialog[currentLine], "?", char);
+                            RemoveLineFromChoices(1, ChoiceCount);
+                            var n = arrDialog[cl].substring(1, arrDialog[cl].length + 1);
+                            var an = TryParseInt(n, 0);
+                            AddTriggerToChoices(1, ChoiceCount, an);
+                            cl++;
                         }
                         else {
-                            AddChoiceWC(ChoiceCount, arrDialog[currentLine], arrDialog[cl], char)
+                            document.getElementById("debugLog").value = "mo";
+                            a = arrDialog[cl].charAt(1);
+                            var char = TryParseInt(a, 0);
+                            cl++;
+                            AddChoicesWC(arrDialog[currentLine], arrDialog[cl], char);
+                        }
+                        //AddChoicesWC(arrDialog[currentLine], arrDialog[cl], char);
+                    } else {
+                        if (arrDialog[cl].indexOf("!") == 0 || arrDialog[cl].indexOf("!") == 0) {
+                            AddChoiceWC(ChoiceCount, arrDialog[currentLine], "!", char);
+                            RemoveLineFromChoices(qn, ChoiceCount);
+                            EndDialog(qn, ChoiceCount);
+                            cl++;
+                        }
+                        else if (arrDialog[cl].indexOf("?") == 0) {
+                            AddChoiceWC(ChoiceCount, arrDialog[currentLine], "!", char);
+                            RemoveLineFromChoices(qn, ChoiceCount);
+                            var n = arrDialog[cl].substring(1, arrDialog[cl].length + 1);
+                            var an = TryParseInt(n, 0);
+                            AddTriggerToChoices(qn, ChoiceCount, an);
+                            cl++;
+                        }
+                        else {
+                            a = arrDialog[cl].charAt(1);
+                            var char = TryParseInt(a, 0);
+                            cl++;
+                            AddChoiceWC(ChoiceCount, arrDialog[currentLine], arrDialog[cl], char);
                         }
 
                     }
