@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgressManager : MonoBehaviour {
     public GameObject[] Characters;
     public Interactable[] InteractableObjects;
-    public bool[] Triggers = new bool[10]; //Tämä tallennukseen
+    public bool[] Triggers = new bool[10];
     public Dictionary<string, int> Inventory = new Dictionary<string, int>(); //Ehkä tallennukseen
 
     void Start()
@@ -36,7 +36,7 @@ public class ProgressManager : MonoBehaviour {
     {
         if (Triggers[1])
         {
-
+            InteractableObjects[0].Dissable(); //apple
         }
         if (Triggers[2])
         {
@@ -48,84 +48,21 @@ public class ProgressManager : MonoBehaviour {
     {
         return Characters;
     }
-    public void ReturnChoice(int questionIndex, int choice)
+    public void ResetTriggers()
     {
-        CheckChoices(questionIndex, choice);
-        CheckTriggers();
-    }
-    private void CheckChoices(int questionIndex, int choice)
-    {
-        switch (questionIndex)
+        for (int i = 0; i < Triggers.Length; i++)
         {
-            //case 0 for copying should newer be used;
-            case 0:
-                {
-                    switch (choice)
-                    {
-                        case 1:
-                            {
-                                return;
-                            }
-                        case 2:
-                            {
-                                return;
-                            }
-                        case 3:
-                            {
-                                return;
-                            }
-                        default:
-                            return;
-                    }
-                }
-            case 1: //speaking flanders #1
-                {
-                    switch (choice)
-                    {
-                        case 1:
-                            {
-                                
-                                return;
-                            }
-                        case 2:
-                            {
-                                
-                                return;
-                            }
-                        case 3:
-                            {
-                                Triggers[2] = true;
-                                return;
-                            }
-                        default:
-                            return;
-                    }
-                }
-            case 2: //stealing apple
-                {
-                    switch (choice)
-                    {
-                        case 1:
-                            {
-                                Inventory.Add("Apple", 1);
-                                InteractableObjects[0].Dissable(); //apple
-                                Triggers[1] = true;
-                                return;
-                            }
-                        case 2:
-                            {
-                                Triggers[2] = true;
-                                return;
-                            }
-                        case 3:
-                            {
-                                return;
-                            }
-                        default:
-                            return;
-                    }
-                }
-
+            Triggers[i] = false;
         }
     }
+    public void ReturnTrigger(int triggerIndex)
+    {
+        SwitchTrigger(triggerIndex);
+        CheckTriggers();
+    }
+    private void SwitchTrigger(int trigger)
+    {
+        Triggers[trigger] = true;
+    }
+    
 }

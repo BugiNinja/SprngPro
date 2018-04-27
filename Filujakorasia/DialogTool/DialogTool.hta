@@ -1,0 +1,21 @@
+<!doctype hta>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DialogTool</title>
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+<HTA:APPLICATION ICON="DialogToolIcon.ico" APPLICATIONNAME="DialogTool" SCROLL="yes" SINGLEINSTANCE="no" WINDOWSTATE="normal"> 
+<link rel="stylesheet" type="text/css" href="DialogTool.css">
+<script type="text/javascript" src="DialogTool.js"></script>
+<script type="text/vbscript" src="DialogTool.vbs" ></script>
+</head>
+<body onload="init()">
+    <div>DialogiNumero:</div>
+    <div id='DNumber'></div>
+    <button type='button' onclick='AddDialog()'>Add Dialog</button>
+    <form id="DialogForm" name="Dialogue" onsubmit="save()">
+        
+    </form>
+    <div id="debug"><textarea id="debugLog"></textarea></div>
+</body>
+</html>

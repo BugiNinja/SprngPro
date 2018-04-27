@@ -45,8 +45,15 @@ public class Interaction : MonoBehaviour {
                     SwitchInteractable(1);
                 }
             }
-            
+            for(int i = 0; i < inter.Count; i++)
+            {
+                if (!inter[i].gameObject.activeSelf)
+                {
+                    inter.RemoveAt(i);
+                }
+            }
         }
+
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -65,6 +72,8 @@ public class Interaction : MonoBehaviour {
 
         }
     }
+
+
 
     private void OnTriggerExit(Collider other)
     {
