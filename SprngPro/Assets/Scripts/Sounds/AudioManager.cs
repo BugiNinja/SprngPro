@@ -20,18 +20,6 @@ public class AudioManager : MonoBehaviour {
         MusicVol = Master.MusicVolume;
         SoundVol = Master.SoundVolume;
 
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
-
         foreach (Music m in Tracks)
         {
             m.Source = gameObject.AddComponent<AudioSource>();

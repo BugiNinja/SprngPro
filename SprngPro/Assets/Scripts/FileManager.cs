@@ -18,18 +18,6 @@ public class FileManager : MonoBehaviour
         WayPoint = 0;
 
         InitSlots();
-
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public void InitNewGame()

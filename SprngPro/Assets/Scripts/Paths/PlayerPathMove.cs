@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerPathMove : MonoBehaviour {
 
+    public Animator anim;
+
     public int SpawnNodeId = 0;
-    public float WalkSpeed = 20;
+    public float WalkSpeed = 10;
 
     private string pathName = "PlayerPath";
     private EditorPath pathToFollow;
@@ -48,9 +50,8 @@ public class PlayerPathMove : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.A) && enabledMove)
         {
-            if(currentWayPointId > LastWayPointId)
-            {
-                
+            if (currentWayPointId > LastWayPointId)
+            {                
                 currentWayPointId = LastWayPointId;
                 LastWayPointId = currentWayPointId + moveDirection;
                 moveDirection = -1;
@@ -68,6 +69,11 @@ public class PlayerPathMove : MonoBehaviour {
             }
             moveSpeed = WalkSpeed;
         }
+        /*else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetBool("Walking", false);
+            moveSpeed = 0;
+        }*/
         else
         {
             moveSpeed = 0;
