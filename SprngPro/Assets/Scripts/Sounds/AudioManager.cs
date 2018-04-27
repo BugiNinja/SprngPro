@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour {
     public Sound[] Sounds;
     public Music[] Tracks;
     public MasterVolume Master;
-    private Sliders slider;
 
     public float MasterVol;
     public float MusicVol;
@@ -17,8 +16,6 @@ public class AudioManager : MonoBehaviour {
 
     void Awake()
     {
-        slider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Sliders>();
-
         MasterVol = Master.Volume;
         MusicVol = Master.MusicVolume;
         SoundVol = Master.SoundVolume;

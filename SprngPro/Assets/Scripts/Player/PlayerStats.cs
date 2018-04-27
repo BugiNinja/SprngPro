@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour {
     private bool isHit;
     private bool isDead;
 
-    private int healthMax;
+    public int HealthMax;
     public int HealthCurrent; //Tallennukseen
 
 	void Start () {
@@ -19,15 +19,15 @@ public class PlayerStats : MonoBehaviour {
         isHit = false;
         isDead = false;
 
-        healthMax = 3;
-        HealthCurrent = healthMax;
+        //HealthMax = 3;
+        HealthCurrent = FileManager.Instance.Health;
 	}
 	
 	void Update () {
         TakeDamage();
         CheckIfDead();
         Die();
-	}
+    }
 
     public void TakeDamage()
     {
@@ -40,8 +40,14 @@ public class PlayerStats : MonoBehaviour {
         if (isHit)
         {
             HealthCurrent--;
+            FileManager.Instance.Health--;
             isHit = false;
         }
+    }
+
+    public int GetHealth()
+    {
+        return HealthCurrent;
     }
 
     public void CheckIfDead()

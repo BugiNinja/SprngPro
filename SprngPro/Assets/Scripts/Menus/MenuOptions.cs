@@ -11,9 +11,15 @@ public class MenuOptions : MonoBehaviour {
         activator = GameObject.Find("MenuActivator").GetComponent<MenuActivator>();
     }
 
-    public void PlayGame()
+    public void NewGame()
     {
+        FileManager.Instance.InitNewGame();
         newScene.ChangeScene(1);
+    }
+
+    public void SaveLoadGame()
+    {
+        activator.FileMenuActivated = true;
     }
 
     public void Continue()
@@ -33,8 +39,16 @@ public class MenuOptions : MonoBehaviour {
 
     public void Back()
     {
-        activator.OptionsActivated = false;
-        activator.MenuActivated = true;
+        if (activator.OptionsActivated)
+        {
+            activator.OptionsActivated = false;
+            activator.MenuActivated = true;
+        }
+        else if (activator.FileMenuActivated)
+        {
+            activator.FileMenuActivated = false;
+            activator.MenuActivated = true;
+        }
     }
 
     public void ExitGame()
@@ -42,9 +56,26 @@ public class MenuOptions : MonoBehaviour {
         newScene.ChangeScene(0);
     }
 
+    public void Save(int n)
+    {
+        FileManager.Instance.SaveGame(n);
+        Back();
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit game");
         Application.Quit();
+    }
+
+    public void LoadFile(int n)
+    {
+        newScene.ChangeScene(1);
+        FileManager.Instance.LoadGame(n);
+    }
+
+    public void Erase(int n)
+    {
+        FileManager.Instance.EraseFile(n);
     }
 }

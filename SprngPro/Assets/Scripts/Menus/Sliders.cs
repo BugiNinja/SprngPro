@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class Sliders : MonoBehaviour {
 
     private Menu menu;
-    private AudioManager manager;
 
     private Slider master;
     private Slider music;
@@ -16,19 +15,18 @@ public class Sliders : MonoBehaviour {
 
     void Start () {
         menu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
-        manager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         master = GameObject.Find("Slider1").GetComponent<Slider>();
         music = GameObject.Find("Slider2").GetComponent<Slider>();
         sound = GameObject.Find("Slider3").GetComponent<Slider>();
 
-        master.value = manager.MasterVol;
-        music.value = manager.MusicVol;
-        sound.value = manager.SoundVol;
+        master.value = AudioManager.Instance.MasterVol;
+        music.value = AudioManager.Instance.MusicVol;
+        sound.value = AudioManager.Instance.SoundVol;
 
-        master.onValueChanged.AddListener(manager.AdjustVolume);
-        music.onValueChanged.AddListener(manager.AdjustMusicVolume);
-        sound.onValueChanged.AddListener(manager.AdjustSoundVolume);
+        master.onValueChanged.AddListener(AudioManager.Instance.AdjustVolume);
+        music.onValueChanged.AddListener(AudioManager.Instance.AdjustMusicVolume);
+        sound.onValueChanged.AddListener(AudioManager.Instance.AdjustSoundVolume);
     }
 
 	void Update () {

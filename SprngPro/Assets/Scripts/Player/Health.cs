@@ -10,7 +10,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        anim = this.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        anim.SetInteger("healthStage", stats.HealthCurrent);
     }
 
     void Update()
