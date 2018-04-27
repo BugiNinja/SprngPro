@@ -9,7 +9,7 @@ public class ProgressManager : MonoBehaviour {
     public Interactable[] InteractableCharacters;
     public Interactable[] InteractableObjects;
     public bool[] Triggers = new bool[10];
-    public Dictionary<string, int> Inventory = new Dictionary<string, int>();
+    public Dictionary<string, int> Inventory = new Dictionary<string, int>(); //Ehkä tallennukseen
 
     void Start()
     {

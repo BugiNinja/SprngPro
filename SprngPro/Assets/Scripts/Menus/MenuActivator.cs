@@ -1,27 +1,35 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuActivator : MonoBehaviour
 {
     public Menu MainMenu;
     public Menu OptionsMenu;
+    public Menu FileMenu;
+
     public bool MenuActivated;
     public bool OptionsActivated;
+    public bool FileMenuActivated;
     public bool MenuLockedInScreen;
 
     private void Awake()
     {
         MainMenu = GameObject.Find("Menu").GetComponent<Menu>();
         OptionsMenu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
+        FileMenu = GameObject.Find("FileMenu").GetComponent<Menu>();
         MenuActivated = MenuLockedInScreen;
         OptionsActivated = false;
+        FileMenuActivated = false;
         MainMenu.gameObject.SetActive(MenuLockedInScreen);
         OptionsMenu.gameObject.SetActive(false);
+        FileMenu.gameObject.SetActive(false);
     }
 
     void Update()
     {
         ActivateMainMenu();
         ActivateOptionsMenu();
+        ActivateLoadMenu();
 
         if (MenuActivated)
         {
@@ -41,7 +49,16 @@ public class MenuActivator : MonoBehaviour
             OptionsMenu.gameObject.SetActive(false);
         }
 
-        if (OptionsActivated || MenuActivated)
+        if (FileMenuActivated)
+        {
+            FileMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            FileMenu.gameObject.SetActive(false);
+        }
+
+        if (OptionsActivated || MenuActivated || FileMenuActivated)
         {
             Time.timeScale = 0;
         }
@@ -77,6 +94,21 @@ public class MenuActivator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && OptionsActivated)
         {
             OptionsActivated = false;
+            MenuActivated = true;
+        }
+    }
+
+    void ActivateLoadMenu()
+    {
+        if (FileMenuActivated)
+        {
+            MenuActivated = false;
+            MainMenu.gameObject.SetActive(false);
+            FileMenu.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && FileMenuActivated)
+        {
+            FileMenuActivated = false;
             MenuActivated = true;
         }
     }
