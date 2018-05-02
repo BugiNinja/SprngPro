@@ -17,7 +17,7 @@
             strData = objFile.ReadAll
 
              
-            arrTrigger = split(strData, vbLf)
+            arrTrigger = split(strData, vbCrLf)
             triggers = UBound(arrTrigger) - 1
             call SetTriggers(triggers)
             ' Clean up.
@@ -59,7 +59,7 @@
             strData = objFile.ReadAll
 
              
-            arrDialog = split(strData, vbLf)
+            arrDialog = split(strData, vbCrLf)
             
             ' Find the position of the string for which we are looking
             i = 0
@@ -102,7 +102,7 @@
             strData = objFile.ReadAll
 
              
-            arrDialog = split(strData, vbLf)
+            arrDialog = split(strData, vbCrLf)
             if arrDialog(UBound(arrDialog)) = "" then
             redim preserve arrDialog(UBound(arrDialog) - 1)
             end if
@@ -228,7 +228,7 @@
             strData = objFile.ReadAll
 
              
-            arrDialog = split(strData, vbLf)
+            arrDialog = split(strData, vbCrLf)
             
             ' Find the position of the string for which we are looking
             i = 0
