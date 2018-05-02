@@ -2,18 +2,24 @@
 
 public class MenuOptions : MonoBehaviour {
 
+    private FileManager fileManager;
     private ChangeScenes newScene;
     private MenuActivator activator;
 
     private void Start()
     {
+        fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
+        if (!fileManager)
+        {
+            Debug.Log("FileManager doesn't exist!");
+        }
         newScene = GameObject.Find("SceneChanger").GetComponent<ChangeScenes>();
         activator = GameObject.Find("MenuActivator").GetComponent<MenuActivator>();
     }
 
     public void NewGame()
     {
-        FileManager.Instance.InitNewGame();
+        fileManager.InitNewGame();
         newScene.ChangeScene(1);
     }
 
@@ -58,7 +64,7 @@ public class MenuOptions : MonoBehaviour {
 
     public void Save(int n)
     {
-        FileManager.Instance.SaveGame(n);
+        fileManager.SaveGame(n);
         Back();
     }
 
@@ -71,11 +77,11 @@ public class MenuOptions : MonoBehaviour {
     public void LoadFile(int n)
     {
         newScene.ChangeScene(1);
-        FileManager.Instance.LoadGame(n);
+        fileManager.LoadGame(n);
     }
 
     public void Erase(int n)
     {
-        FileManager.Instance.EraseFile(n);
+        fileManager.EraseFile(n);
     }
 }

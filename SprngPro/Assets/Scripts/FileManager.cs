@@ -2,21 +2,18 @@
 
 public class FileManager : MonoBehaviour
 {
-    public static FileManager Instance;
-
     public int Health;
     public int WayPoint;
 
-    public bool FileMenuOpened = false;
-    public bool EraseMenuOpened = false;
+    public bool FileMenuOpened;
+    public bool EraseMenuOpened;
 
-    public bool[] SaveSlots = new bool[4] {false, false, false, false};
+    public bool[] SaveSlots = new bool[4];
 
     private void Awake()
     {
         Health = 3;
         WayPoint = 0;
-
         InitSlots();
     }
 
