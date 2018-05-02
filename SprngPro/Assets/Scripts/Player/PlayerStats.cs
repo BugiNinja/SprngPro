@@ -3,8 +3,9 @@ using UnityEngine.Audio;
 
 public class PlayerStats : MonoBehaviour {
 
-    public Animator anim;
-    private GameObject deathScreen;
+    private FileManager fileManager;
+    //public Animator anim;
+    //private GameObject deathScreen;
 
     private bool isHit;
     private bool isDead;
@@ -13,14 +14,32 @@ public class PlayerStats : MonoBehaviour {
     public int HealthCurrent; //Tallennukseen
 
 	void Start () {
-        deathScreen = GameObject.Find("DeathScreen");
-        deathScreen.gameObject.SetActive(false);
+        fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
+        if (!fileManager)
+        {
+            Debug.Log("FileManager doesn't exist!");
+        }
+
+        /*deathScreen = GameObject.Find("DeathScreen");
+        if (!deathScreen)
+        {
+            Debug.Log("No DeathScreen in hierarchy!");
+        }
+        else
+        {
+            deathScreen.gameObject.SetActive(false);
+        }
+
+        if (!anim)
+        {
+            Debug.Log("Animator missing!!");
+        }*/
 
         isHit = false;
         isDead = false;
 
         //HealthMax = 3;
-        HealthCurrent = FileManager.Instance.Health;
+        HealthCurrent = fileManager.Health;
 	}
 	
 	void Update () {
@@ -40,7 +59,7 @@ public class PlayerStats : MonoBehaviour {
         if (isHit)
         {
             HealthCurrent--;
-            FileManager.Instance.Health--;
+            fileManager.Health--;
             isHit = false;
         }
     }
@@ -63,8 +82,8 @@ public class PlayerStats : MonoBehaviour {
     {
         if(isDead)
         {
-            deathScreen.gameObject.SetActive(true);
-            anim.Play("AppearDeathScreen");
+            //deathScreen.gameObject.SetActive(true);
+            //anim.Play("AppearDeathScreen");
             Time.timeScale = 0;
         }
     }

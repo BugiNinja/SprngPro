@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
+    private FileManager fileManager;
     public MenuOptions Option;
     Scene currentScene;
 
@@ -15,6 +16,11 @@ public class Menu : MonoBehaviour {
     public int SliderNum;
 
 	void Start () {
+        fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
+        if (!fileManager)
+        {
+            Debug.Log("FileManager doesn't exist!");
+        }
         Option = gameObject.GetComponent<MenuOptions>();
 
         optionCount = transform.GetChild(0).childCount;
@@ -26,7 +32,7 @@ public class Menu : MonoBehaviour {
 
         SliderNum = 0;
 
-        if (!FileManager.Instance.SlotExists() && transform.GetChild(0).childCount == 5 && !FileManager.Instance.FileMenuOpened)
+        if (!fileManager.SlotExists() && transform.GetChild(0).childCount == 5 && !fileManager.FileMenuOpened)
         {
             Destroy(transform.GetChild(0).GetChild(0).gameObject);
             for (int i = 1; i < transform.GetChild(0).childCount; i++)
@@ -80,7 +86,7 @@ public class Menu : MonoBehaviour {
             }
             if(OptionName == "SaveLoadButton")
             {
-                FileManager.Instance.FileMenuOpened = true;
+                fileManager.FileMenuOpened = true;
                 Option.SaveLoadGame();
             }
             if (OptionName == "ContinueButton")
@@ -98,7 +104,7 @@ public class Menu : MonoBehaviour {
             if (OptionName == "BackButton")
             {
                 N = 0;
-                FileManager.Instance.EraseMenuOpened = false;
+                fileManager.EraseMenuOpened = false;
                 Option.Back();
             }
             if (OptionName == "ExitButton")
@@ -111,31 +117,31 @@ public class Menu : MonoBehaviour {
             }
             if (OptionName == "FILE" + (N + 1))
             {
-                if (SceneManager.GetActiveScene().buildIndex == 0 && !FileManager.Instance.EraseMenuOpened)
+                if (SceneManager.GetActiveScene().buildIndex == 0 && !fileManager.EraseMenuOpened)
                 {
-                    if (FileManager.Instance.SaveSlots[N + 1])
+                    if (fileManager.SaveSlots[N + 1])
                     {
                         Option.LoadFile(N + 1);
-                        FileManager.Instance.FileMenuOpened = false;
+                        fileManager.FileMenuOpened = false;
                     }
-                    else if (!FileManager.Instance.SaveSlots[N + 1])
+                    else if (!fileManager.SaveSlots[N + 1])
                     {
                         //Kerro jotenkin, että paikka tyhjä
                     }
                 }
-                else if (SceneManager.GetActiveScene().buildIndex == 1 && !FileManager.Instance.EraseMenuOpened)
+                else if (SceneManager.GetActiveScene().buildIndex == 1 && !fileManager.EraseMenuOpened)
                 {
                     Option.Save(N + 1);
                 }
-                else if (FileManager.Instance.EraseMenuOpened)
+                else if (fileManager.EraseMenuOpened)
                 {
                     Option.Erase(N + 1);
-                    FileManager.Instance.FileMenuOpened = false;
+                    fileManager.FileMenuOpened = false;
                 }
             }
             if (OptionName == "EraseButton")
             {
-                FileManager.Instance.EraseMenuOpened = true;
+                fileManager.EraseMenuOpened = true;
             }
         }
 

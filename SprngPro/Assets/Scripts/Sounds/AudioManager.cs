@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        PlayMusic("BG_Music");
+        //Play bg-music
     }
 
     private void Update()
@@ -61,6 +61,13 @@ public class AudioManager : MonoBehaviour {
         {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
         }
+
+        /*if (PlayerPathMove.TakeAStep)
+        {
+            int r;
+            r = UnityEngine.Random.Range(1, 7);
+            PlaySound("Step" + r);
+        }*/
     }
 
     public void PlayMusic (string name)
