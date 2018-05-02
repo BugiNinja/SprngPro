@@ -56,6 +56,7 @@ public class PlayerPathMove : MonoBehaviour {
                 currentWayPointId += moveDirection;
 
             }
+        }
         fileManager.WayPoint = LastWayPointId;
     }
 
@@ -85,13 +86,14 @@ public class PlayerPathMove : MonoBehaviour {
             if(currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
             {
                 currentWayPointId = LastWayPointId;
-            enabledMove = true;
-            anim.SetBool("Walking", true);
-            walking = true;
+            
                 moveSpeed = 0;
             }
             else
             {
+                enabledMove = true;
+                anim.SetBool("Walking", true);
+                walking = true;
                 moveSpeed = WalkSpeed;
             }
         }
@@ -111,12 +113,12 @@ public class PlayerPathMove : MonoBehaviour {
             }
             else
             {
+                enabledMove = true;
+                anim.SetBool("Walking", true);
+                walking = true;
                 moveSpeed = WalkSpeed;
             }
-            enabledMove = true;
-            anim.SetBool("Walking", true);
-            walking = true;
-            moveSpeed = WalkSpeed;
+            
         }
         else
         {
