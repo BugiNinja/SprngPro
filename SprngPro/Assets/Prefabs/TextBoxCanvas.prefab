@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223027376901235878}
   - component: {fileID: 114449698218457794}
   - component: {fileID: 114676590641902196}
+  - component: {fileID: 114124655364733606}
   m_Layer: 5
   m_Name: TextBoxCanvas
   m_TagString: Untagged
@@ -83,6 +84,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114124655364733606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037212481850632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b4c21f7b4eb6f44b8af19bc5b90f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114152464323819564
 MonoBehaviour:
   m_ObjectHideFlags: 1

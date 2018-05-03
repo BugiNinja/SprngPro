@@ -41,13 +41,22 @@ public class DialogueManager : MonoBehaviour {
 
     private void Start()
     {
-        pm = FindObjectOfType<ProgressManager>();
-        pMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPathMove>();
-        indicator = GameObject.Find("Player/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue/Indicator");
+        dialogFile = Resources.Load("Dialogues") as TextAsset;
         if (dialogFile != null)
         {
             dialogLines = (dialogFile.text.Split('\n'));
         }
+        if (dialogFile == null)
+        {
+            Debug.LogWarning("Dialogue file missing!");
+        }
+        pm = FindObjectOfType<ProgressManager>();
+        if (pm == null)
+        {
+            Debug.LogWarning("Progress Manager missing!");
+        }
+        UpdatePlayer();
+
         int  conI = 1;
         for(int i = 0; i < dialogLines.Length - 1; i++)
         {
@@ -58,6 +67,24 @@ public class DialogueManager : MonoBehaviour {
             }
         }
         Characters = pm.GetCharacters();
+    }
+
+    public void UpdatePlayer()
+    {
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            pMove = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPathMove>();
+            textBox = GameObject.Find("Player/TextBoxCanvas/TextBoxContainer/TextBg");
+        }
+        else
+        {
+            Debug.LogWarning("Player missing!");
+        }
+        indicator = GameObject.Find("Player/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue/Indicator");
+        if (indicator == null)
+        {
+            Debug.LogWarning("Indicator is missing from player dialog!");
+        }
     }
 
     private void Update()
@@ -160,8 +187,17 @@ public class DialogueManager : MonoBehaviour {
     private void ChanceCharacter(int speakingChar)
     {
         DisableTextBox();
-        textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
-        dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+        if (Characters[speakingChar] == null)
+        {
+            Debug.LogWarning(Characters[speakingChar] + " is not in scene! Player will speak instead");
+            textBox = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+            dialogue = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+        }
+        else
+        {
+            textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+            dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+        }
         EnableTextBox();
     }
 
