@@ -8,6 +8,7 @@ public class PlayerPathMove : MonoBehaviour {
     public Animator anim;
 
     public int SpawnNodeId = 0;
+
     public float WalkSpeed = 2;
 
     private string pathName = "PlayerPath";
@@ -23,11 +24,13 @@ public class PlayerPathMove : MonoBehaviour {
     public float WalkAnim = 1;
     private float reachDistance = 1f;
 
-    private bool walking;
     public bool TakeAStep;
+    private bool flipped;
 
     private void Start()
     {
+        flipped = false;
+
         fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
         if (!fileManager)
         {
@@ -37,12 +40,11 @@ public class PlayerPathMove : MonoBehaviour {
         currentWayPointId = SpawnNodeId;
         LastWayPointId = SpawnNodeId - 1;
         transform.position = pathToFollow.Nodes[currentWayPointId].position;
-        walking = false;
     }
 
     private void Update()
     {
-        CheckMovement();
+        CheckInput();
         if (moveSpeed > 0)
         {
             float distance = Vector3.Distance(pathToFollow.Nodes[currentWayPointId].position, transform.position);
@@ -57,6 +59,18 @@ public class PlayerPathMove : MonoBehaviour {
 
             }
         }
+
+        if (flipped)
+        {
+            AnimatorStateInfo ai = anim.GetCurrentAnimatorStateInfo(0);
+            if (ai.IsName("Idle"))
+            {
+                Flip();
+                flipped = false;
+            }           
+        }
+
+
         fileManager.WayPoint = LastWayPointId;
     }
 
@@ -72,59 +86,35 @@ public class PlayerPathMove : MonoBehaviour {
         }
     }
 
-    private void CheckMovement()
+    private void CheckInput()
     {
-        if (Input.GetKey(KeyCode.A) && enabledMove)
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) || flipped)
+        {
+            anim.SetBool("Walking", false);
+            moveSpeed = 0;
+        }
+        else if (Input.GetKey(KeyCode.A) && enabledMove)
         {
             if (currentWayPointId > LastWayPointId)
-            {                
-                currentWayPointId = LastWayPointId;
-                LastWayPointId = currentWayPointId + moveDirection;
-                moveDirection = -1;
-                Flip();
-            }
-            if(currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
             {
-                currentWayPointId = LastWayPointId;
-            
-                moveSpeed = 0;
+                ChangeDirection(-1);
             }
-            else
-            {
-                enabledMove = true;
-                anim.SetBool("Walking", true);
-                walking = true;
-                moveSpeed = WalkSpeed;
-            }
+            CheckMovement();
         }
+
         else if (Input.GetKey(KeyCode.D) && enabledMove)
         {
             if (currentWayPointId < LastWayPointId)
             {
-                currentWayPointId = LastWayPointId;
-                LastWayPointId = currentWayPointId + moveDirection;
-                moveDirection = 1;
-                Flip();
+                ChangeDirection(1);
             }
-            if (currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
-            {
-                currentWayPointId = LastWayPointId;
-                moveSpeed = 0;
-            }
-            else
-            {
-                enabledMove = true;
-                anim.SetBool("Walking", true);
-                walking = true;
-                moveSpeed = WalkSpeed;
-            }
-            
+            CheckMovement();
         }
+
         else
         {
             moveSpeed = 0;
             anim.SetBool("Walking", false);
-            walking = false;
         }
     }
 
@@ -140,18 +130,37 @@ public class PlayerPathMove : MonoBehaviour {
         }
     }
 
+    void Walk()
+    {
+        anim.SetBool("Walking", true);
+        enabledMove = true;
+        moveSpeed = WalkSpeed;
+    }
+
     void Flip()
     {
-        if (!walking)
+        transform.localRotation *= Quaternion.Euler(0f, 180f, 0f);
+    }
+
+    void ChangeDirection(int direction)
+    {
+        currentWayPointId = LastWayPointId;
+        LastWayPointId = currentWayPointId + moveDirection;
+        moveDirection = direction;
+        anim.SetBool("Walking", false);
+        flipped = true;
+    }
+    void CheckMovement()
+    {
+        if (currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
         {
-            transform.localRotation *= Quaternion.Euler(0f, 180f, 0f);
+            currentWayPointId = LastWayPointId;
+            moveSpeed = 0;
         }
         else
         {
-            anim.SetBool("Walking", false);
-            walking = false;
-            transform.localRotation *= Quaternion.Euler(0f, 180f, 0f);
-            enabledMove = false;
+            Walk();
         }
     }
+
 }

@@ -42,7 +42,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1328003284481098
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1663283097775606
 GameObject:
@@ -74,7 +74,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1800956644354848
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4535505617999274}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4433642522269778
 Transform:
@@ -160,7 +160,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4535505617999274}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4535505617999274
 Transform:
@@ -175,9 +175,9 @@ Transform:
   - {fileID: 4980356411884228}
   - {fileID: 4019927570485192}
   - {fileID: 4553729844371152}
+  - {fileID: 4950551570475490}
   - {fileID: 4276511355144894}
   - {fileID: 4433642522269778}
-  - {fileID: 4950551570475490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -200,12 +200,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1231063561378290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4535505617999274}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4980356411884228
 Transform:
@@ -282,19 +282,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
+  - SoundName: Step1
+    Clip: {fileID: 8300000, guid: 58edd795b0597f54489dc41248d8ff65, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step2
+    Clip: {fileID: 8300000, guid: 58b9ea0c88b7c4f439c4d235f82682b8, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step3
+    Clip: {fileID: 8300000, guid: ac4c9f9a1b9285c40aa3e730d9c97df8, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step4
+    Clip: {fileID: 8300000, guid: e939c7f202c27c541a63c6b46b8a8ba6, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step5
+    Clip: {fileID: 8300000, guid: 1c6c3145c03536d4bb53116d124752e1, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step6
+    Clip: {fileID: 8300000, guid: 92735c6658839d14f92e226ca9815cd5, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - SoundName: Step7
+    Clip: {fileID: 8300000, guid: 8af003759ddd46d47a7a257ea73855c7, type: 3}
+    Volume: 0.416
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
   - SoundName: TakeDamage
     Clip: {fileID: 8300000, guid: 35ebc691198fbb54aa9b10fb7df78eba, type: 3}
     Volume: 0.416
     Pitch: 1
     Loop: 0
     Source: {fileID: 0}
-  Tracks:
-  - TrackName: BG_Music
-    Clip: {fileID: 8300000, guid: 56944e08269645343b4de06b21983617, type: 3}
-    Volume: 0.233
-    Pitch: 1
-    Loop: 1
-    Source: {fileID: 0}
+  Tracks: []
   Master:
     Volume: 1
     MusicVolume: 1
