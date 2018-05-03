@@ -26,6 +26,10 @@ public class ProgressManager : MonoBehaviour {
         InteractableCharacters = new Interactable[NPCNames.Length];
         Characters = new GameObject[5];
         Characters[0] = GameObject.FindGameObjectWithTag("Player");
+        if(Characters[0] == null)
+        {
+            Debug.LogWarning("Player missing!");
+        }
         Characters[1] = null;
         for (int i = 0; i < NPCNames.Length; i++)
         {
