@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerPathMove : MonoBehaviour {
 
+    private AudioManager audioManager;
     private FileManager fileManager;
     public Animator anim;
 
@@ -31,6 +32,7 @@ public class PlayerPathMove : MonoBehaviour {
     {
         flipped = false;
 
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
         if (!fileManager)
         {
@@ -69,7 +71,6 @@ public class PlayerPathMove : MonoBehaviour {
                 flipped = false;
             }           
         }
-
 
         fileManager.WayPoint = LastWayPointId;
     }
@@ -150,6 +151,7 @@ public class PlayerPathMove : MonoBehaviour {
         anim.SetBool("Walking", false);
         flipped = true;
     }
+
     void CheckMovement()
     {
         if (currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
@@ -163,4 +165,9 @@ public class PlayerPathMove : MonoBehaviour {
         }
     }
 
+    void MakeStepSound()
+    {
+        audioManager.RandomizePitchAndVolume(0);
+        audioManager.PlaySound("Step1"); //Randomoi myös klippi!
+    }
 }

@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        //Play bg-music
+        PlayMusic("BG-music");
     }
 
     private void Update()
@@ -61,13 +61,6 @@ public class AudioManager : MonoBehaviour {
         {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
         }
-
-        /*if (PlayerPathMove.TakeAStep)
-        {
-            int r;
-            r = UnityEngine.Random.Range(1, 7);
-            PlaySound("Step" + r);
-        }*/
     }
 
     public void PlayMusic (string name)
@@ -80,6 +73,15 @@ public class AudioManager : MonoBehaviour {
     {
         Sound s = Array.Find(Sounds, Sound => Sound.SoundName == name);
         s.Source.Play();
+    }
+
+    public void RandomizePitchAndVolume(int index)
+    {
+        float r, s;
+        r = UnityEngine.Random.Range(0.5f, 3f);
+        s = UnityEngine.Random.Range(0.4f, 0.6f);
+        Sounds[index].Pitch = r;
+        Sounds[index].Volume = s;
     }
 
     public void AdjustVolume(float newVolume)
