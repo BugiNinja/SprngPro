@@ -164,10 +164,4 @@ public class PlayerPathMove : MonoBehaviour {
             Walk();
         }
     }
-
-    void MakeStepSound()
-    {
-        audioManager.RandomizePitchAndVolume(0);
-        audioManager.PlaySound("Step1"); //Randomoi myös klippi!
-    }
 }
