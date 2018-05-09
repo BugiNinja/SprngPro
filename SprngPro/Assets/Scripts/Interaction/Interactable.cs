@@ -8,8 +8,8 @@ public class Interactable : MonoBehaviour {
     private DialogueManager Dialog;
 
     void Start () {
-        Dialog = FindObjectOfType<DialogueManager>();
-        
+        Dialog = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+
     }
 	
 

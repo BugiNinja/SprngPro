@@ -10,12 +10,12 @@ public class Interaction : MonoBehaviour {
     public DialogueManager Dialog;
 
     private void Start () {
-        Dialog = FindObjectOfType<DialogueManager>();
+        Dialog = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         interactableCount = -1;
 	}
 
 	private void Update () {
-		/*if(interactableCount > -1)
+		if(interactableCount > -1)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -52,7 +52,7 @@ public class Interaction : MonoBehaviour {
                     inter.RemoveAt(i);
                 }
             }
-        }*/
+        }
 
 	}
 

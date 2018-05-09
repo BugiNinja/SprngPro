@@ -7,7 +7,7 @@ public class Dynamicamera : MonoBehaviour {
     private GameObject player;
     private Camera c;
     private GameObject background;
-    private Vector3 offset;
+    public Vector3 offset;
     private float backgroundmin;
     private float backgroundmax;
     private float newPositionX;
@@ -21,9 +21,17 @@ public class Dynamicamera : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         background = GameObject.FindGameObjectWithTag("Background");
+        if(background == null)
+        {
+            Debug.LogWarning("missing background bound!");
+        }
+        if(player == null)
+        {
+            Debug.LogWarning("player is missing or don't have player tag!");
+        }
         c = gameObject.GetComponent<Camera>();
         //offset = transform.position - player.transform.position;
-        offset = new Vector3(0, 5, -10);
+        offset = new Vector3(0, 2, -10);
         backgroundmin = background.GetComponent<Renderer>().bounds.min.x;
         backgroundmax = background.GetComponent<Renderer>().bounds.max.x;
     }

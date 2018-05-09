@@ -79,13 +79,21 @@ public class AudioManager : MonoBehaviour {
     public void PlayMusic (string name)
     {
         Music m = Array.Find(Tracks, Music => Music.TrackName == name);
-        m.Source.Play();
+        if(m != null)
+        {
+            m.Source.Play();
+        }
+        
     }
 
     public void PlaySound(string name)
     {
         Sound s = Array.Find(Sounds, Sound => Sound.SoundName == name);
-        s.Source.Play();
+        if(s != null)
+        {
+            s.Source.Play();
+        }
+        
     }
 
     public void PlaySound (string name, float volume, float pitch)
