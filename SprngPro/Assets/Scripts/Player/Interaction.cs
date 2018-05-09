@@ -15,7 +15,7 @@ public class Interaction : MonoBehaviour {
 	}
 
 	private void Update () {
-		if(interactableCount > -1)
+		/*if(interactableCount > -1)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -52,7 +52,7 @@ public class Interaction : MonoBehaviour {
                     inter.RemoveAt(i);
                 }
             }
-        }
+        }*/
 
 	}
 

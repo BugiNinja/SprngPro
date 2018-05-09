@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 
 public class PlayerStats : MonoBehaviour {
 
-    private FileManager fileManager;
+    //private FileManager fileManager;
     //public Animator anim;
     //private GameObject deathScreen;
 
@@ -14,13 +14,13 @@ public class PlayerStats : MonoBehaviour {
     public int HealthCurrent; //Tallennukseen
 
 	void Start () {
-        fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
-        if (!fileManager)
+        //fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
+        /*if (!fileManager)
         {
             Debug.Log("FileManager doesn't exist!");
         }
 
-        /*deathScreen = GameObject.Find("DeathScreen");
+        deathScreen = GameObject.Find("DeathScreen");
         if (!deathScreen)
         {
             Debug.Log("No DeathScreen in hierarchy!");
@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour {
         isDead = false;
 
         //HealthMax = 3;
-        HealthCurrent = fileManager.Health;
+        //HealthCurrent = fileManager.Health;
 	}
 	
 	void Update () {
@@ -59,7 +59,7 @@ public class PlayerStats : MonoBehaviour {
         if (isHit)
         {
             HealthCurrent--;
-            fileManager.Health--;
+            //fileManager.Health--;
             isHit = false;
         }
     }

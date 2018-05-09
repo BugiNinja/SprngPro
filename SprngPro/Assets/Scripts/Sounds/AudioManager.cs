@@ -43,7 +43,9 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        PlayMusic("BG-music");
+        PlaySound("WindAmbient");
+        PlaySound("CrowdAmbient");
+        //PlayMusic("");
     }
 
     private void Update()
@@ -55,11 +57,13 @@ public class AudioManager : MonoBehaviour {
         foreach (Music m in Tracks)
         {
             m.Source.volume = m.Volume * Master.Volume * Master.MusicVolume;
+            m.Source.pitch = m.Pitch;
         }
 
         foreach (Sound s in Sounds)
         {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
+            s.Source.pitch = s.Pitch;
         }
     }
 
@@ -69,19 +73,37 @@ public class AudioManager : MonoBehaviour {
         m.Source.Play();
     }
 
-    public void PlaySound (string name)
+    public void PlaySound(string name)
     {
         Sound s = Array.Find(Sounds, Sound => Sound.SoundName == name);
         s.Source.Play();
     }
 
-    public void RandomizePitchAndVolume(int index)
+    public void PlaySound (string name, float volume, float pitch)
     {
-        float r, s;
-        r = UnityEngine.Random.Range(0.5f, 3f);
-        s = UnityEngine.Random.Range(0.4f, 0.6f);
-        Sounds[index].Pitch = r;
-        Sounds[index].Volume = s;
+        Sound s = Array.Find(Sounds, Sound => Sound.SoundName == name);
+        s.Pitch = pitch;
+        s.Volume = volume;
+        s.Source.Play();
+    }
+
+    public float RandomSoundPitch()
+    {
+        float pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        return pitch;
+    }
+
+    public float RandomSoundVolume()
+    {
+        float volume = UnityEngine.Random.Range(0.2f, 0.6f);
+        return volume;
+    }
+
+    public string RandomSoundName(int minRange, int maxRange)
+    {
+        int index = UnityEngine.Random.Range(minRange - 1, maxRange - 1);
+        string soundName = Sounds[index].SoundName;
+        return soundName;
     }
 
     public void AdjustVolume(float newVolume)

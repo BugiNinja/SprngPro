@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPathMove : MonoBehaviour {
 
     private AudioManager audioManager;
-    private FileManager fileManager;
+    //private FileManager fileManager;
     public Animator anim;
 
     public int SpawnNodeId = 0;
@@ -33,11 +33,11 @@ public class PlayerPathMove : MonoBehaviour {
         flipped = false;
 
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
+        /*fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
         if (!fileManager)
         {
             Debug.Log("FileManager doesn't exist!");
-        }
+        }*/
         pathToFollow = GameObject.Find(pathName).GetComponent<NodePath>();
         if(pathToFollow == null)
         {
@@ -76,7 +76,7 @@ public class PlayerPathMove : MonoBehaviour {
             }           
         }
 
-        fileManager.WayPoint = LastWayPointId;
+        //fileManager.WayPoint = LastWayPointId;
     }
 
     public void ChangeSpawnPoint(bool right)
