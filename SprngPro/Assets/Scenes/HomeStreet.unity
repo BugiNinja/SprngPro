@@ -108,32 +108,61 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &196362669 stripped
+--- !u!1 &186868694
 GameObject:
-  m_PrefabParentObject: {fileID: 1788099364886472, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-    type: 2}
-  m_PrefabInternal: {fileID: 1566907069}
---- !u!81 &196362679
-AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196362669}
-  m_Enabled: 1
---- !u!114 &196362680
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 186868697}
+  - component: {fileID: 186868696}
+  - component: {fileID: 186868695}
+  m_Layer: 0
+  m_Name: ScreenTransitionRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &186868695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196362669}
+  m_GameObject: {fileID: 186868694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b81416b50f0ed604bb16d5b84748351b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4328e9ec0adb48a4f9e77f7034fb2bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioName: 
-  AudioVolume: 0
-  AudioPitch: 0
+  right: 1
+  NextSceneNumber: 3
+--- !u!65 &186868696
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 186868694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5.61, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &186868697
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 186868694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 31.04, y: -3.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &208255525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2035,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 137481113899957854, guid: 19a0cc10ca44096488ddeabd7f2baa39,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137897957693710264, guid: 19a0cc10ca44096488ddeabd7f2baa39,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137294975331341590, guid: 19a0cc10ca44096488ddeabd7f2baa39,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137446888231529774, guid: 19a0cc10ca44096488ddeabd7f2baa39,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 137972208086626566, guid: 19a0cc10ca44096488ddeabd7f2baa39,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 137008634098451674, guid: 19a0cc10ca44096488ddeabd7f2baa39,
         type: 2}
       propertyPath: m_Mesh
@@ -2021,32 +2075,7 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 137294975331341590, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137446888231529774, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137481113899957854, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 137649722804011188, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137897957693710264, guid: 19a0cc10ca44096488ddeabd7f2baa39,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 137972208086626566, guid: 19a0cc10ca44096488ddeabd7f2baa39,
         type: 2}
       propertyPath: m_Mesh
       value: 

@@ -3,7 +3,7 @@
 public class MenuOptions : MonoBehaviour {
 
     private FileManager fileManager;
-    private ChangeScenes newScene;
+    private SceneChange newScene;
     private MenuActivator activator;
 
     private void Start()
@@ -13,14 +13,14 @@ public class MenuOptions : MonoBehaviour {
         {
             Debug.Log("FileManager doesn't exist!");
         }
-        newScene = GameObject.Find("SceneChanger").GetComponent<ChangeScenes>();
+        newScene = GameObject.Find("SceneManager").GetComponent<SceneChange>();
         activator = GameObject.Find("MenuActivator").GetComponent<MenuActivator>();
     }
 
     public void NewGame()
     {
         fileManager.InitNewGame();
-        newScene.ChangeScene(1);
+        newScene.ChangeScene(2);
     }
 
     public void SaveLoadGame()
