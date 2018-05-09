@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EditorPath : MonoBehaviour {
+public class PathEditor : MonoBehaviour {
 
     public Color RayColor = Color.white;
     public List<Transform> Nodes = new List<Transform>();
     private Transform[] childTransforms;
+    public Transform path;
 
     private void OnDrawGizmos()
     {
-        childTransforms = GetComponentsInChildren<Transform>();
-        if (childTransforms.Length - 1 != transform.childCount || IsPathObjectSelected())
+#if UNITY_EDITOR
+        path = FindObjectOfType<NodePath>().transform;
+        childTransforms = path.GetComponentsInChildren<Transform>();
+        if (childTransforms.Length - 1 != path.childCount || IsPathObjectSelected())
         {
             Gizmos.color = RayColor;
-            
+
             Nodes.Clear();
             foreach (Transform path_obj in childTransforms)
             {
-                if (path_obj != this.transform)
+                if (path_obj != path)
                 {
                     Nodes.Add(path_obj);
                 }
@@ -36,19 +39,21 @@ public class EditorPath : MonoBehaviour {
                 }
             }
         }
+#endif
     }
     private bool IsPathObjectSelected()
     {
+#if UNITY_EDITOR
         if (UnityEditor.Selection.activeTransform != null)
         {
             Transform editorSelection = UnityEditor.Selection.activeTransform;
-            if (editorSelection.Equals(this.transform))
+            if (editorSelection.Equals(path))
             {
                 return true;
             }
             if (editorSelection.parent != null)
             {
-                if (editorSelection.parent.Equals(this.transform))
+                if (editorSelection.parent.Equals(path))
                 {
                     return true;
                 }
@@ -62,6 +67,9 @@ public class EditorPath : MonoBehaviour {
                 return false;
             }
         }
+#endif
         return false;
+
     }
+
 }

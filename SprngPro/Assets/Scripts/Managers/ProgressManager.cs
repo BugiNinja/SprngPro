@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProgressManager : MonoBehaviour {
-    string[] NPCNames = {"Badboy", "Trader", "Blacksmith" };
+    string[] NPCNames = {"BoxBoy", "Trader", "Blacksmith" };
     string[] InterNames = { "Meat" };
     public GameObject[] Characters;
     public Interactable[] InteractableCharacters;
