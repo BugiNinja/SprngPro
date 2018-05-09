@@ -38,6 +38,11 @@ public class AudioManager : MonoBehaviour {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
             s.Source.pitch = s.Pitch;
             s.Source.loop = s.Loop;
+
+            s.Source.rolloffMode = AudioRolloffMode.Linear;
+            s.Source.spatialBlend = s.SpatialBlend;
+            s.Source.minDistance = s.MinDistance;
+            s.Source.maxDistance = s.MaxDistance;
         }
     }
 
@@ -64,6 +69,10 @@ public class AudioManager : MonoBehaviour {
         {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
             s.Source.pitch = s.Pitch;
+
+            s.Source.spatialBlend = s.SpatialBlend;
+            s.Source.minDistance = s.MinDistance;
+            s.Source.maxDistance = s.MaxDistance;
         }
     }
 
