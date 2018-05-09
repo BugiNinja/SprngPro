@@ -269,8 +269,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 418677908}
-  - component: {fileID: 418677907}
   - component: {fileID: 418677909}
+  - component: {fileID: 418677907}
   m_Layer: 0
   m_Name: PlayerPath
   m_TagString: Untagged
@@ -286,31 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 418677906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7065bb264c6df8545a28488fb0a2a803, type: 3}
+  m_Script: {fileID: 11500000, guid: 828206f8730c6994f8bfaab059c8b8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Nodes:
-  - {fileID: 1229813014}
-  - {fileID: 1860804282}
-  - {fileID: 1591686399}
-  - {fileID: 916725643}
-  - {fileID: 1504695685}
-  - {fileID: 1333784364}
-  - {fileID: 1390894735}
-  - {fileID: 692635023}
-  - {fileID: 1219218854}
-  - {fileID: 557286984}
-  - {fileID: 1095193188}
-  - {fileID: 450849726}
-  - {fileID: 1537624703}
-  - {fileID: 1450626241}
-  - {fileID: 990644717}
-  - {fileID: 208255526}
-  - {fileID: 252725682}
-  - {fileID: 825984393}
-  - {fileID: 232214709}
-  - {fileID: 1278867583}
-  - {fileID: 1085261650}
+  Nodes: []
 --- !u!4 &418677908
 Transform:
   m_ObjectHideFlags: 0

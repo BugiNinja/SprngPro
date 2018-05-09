@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NodePath : MonoBehaviour {
-
     public List<Transform> Nodes = new List<Transform>();
     private Transform[] childTransforms;
 
@@ -11,14 +10,14 @@ public class NodePath : MonoBehaviour {
     {
         childTransforms = GetComponentsInChildren<Transform>();
 
-            foreach (Transform path_obj in childTransforms)
+        foreach (Transform path_obj in childTransforms)
+        {
+            if (path_obj != this.transform)
             {
-                if (path_obj != this.transform)
-                {
-                    Nodes.Add(path_obj);
-                }
+                Nodes.Add(path_obj);
             }
-        
+        }
+
     }
     public void GetNodes(List<Transform> Nodes)
     {
