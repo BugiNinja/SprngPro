@@ -13,7 +13,7 @@ public class PlayerPathMove : MonoBehaviour {
     public float WalkSpeed = 2;
 
     private string pathName = "PlayerPath";
-    private EditorPath pathToFollow;
+    private NodePath pathToFollow;
 
     private bool enabledMove = true;
 
@@ -38,7 +38,11 @@ public class PlayerPathMove : MonoBehaviour {
         {
             Debug.Log("FileManager doesn't exist!");
         }
-        pathToFollow = GameObject.Find(pathName).GetComponent<EditorPath>();
+        pathToFollow = GameObject.Find(pathName).GetComponent<NodePath>();
+        if(pathToFollow == null)
+        {
+            Debug.Log("PlayerPath doesn't exist or is named wrong!");
+        }
         currentWayPointId = SpawnNodeId;
         LastWayPointId = SpawnNodeId - 1;
         transform.position = pathToFollow.Nodes[currentWayPointId].position;
