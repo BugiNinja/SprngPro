@@ -17,7 +17,7 @@ public class PlayerPathMove : MonoBehaviour {
 
     private bool enabledMove = true;
 
-    private int currentWayPointId = 0;
+    private int CurrentWayPointId = 0;
     public int LastWayPointId; //Tallennukseen
 
     private int moveDirection = 1; //1 = forward, -1 = backward 
@@ -38,14 +38,20 @@ public class PlayerPathMove : MonoBehaviour {
         {
             Debug.Log("FileManager doesn't exist!");
         }
+        GetPathToFollow();
+        
+        CurrentWayPointId = SpawnNodeId;
+        LastWayPointId = SpawnNodeId - 1;
+        transform.position = pathToFollow.Nodes[CurrentWayPointId].position;
+    }
+
+    private void GetPathToFollow()
+    {
         pathToFollow = GameObject.Find(pathName).GetComponent<NodePath>();
-        if(pathToFollow == null)
+        if (pathToFollow == null)
         {
             Debug.Log("PlayerPath doesn't exist or is named wrong!");
         }
-        currentWayPointId = SpawnNodeId;
-        LastWayPointId = SpawnNodeId - 1;
-        transform.position = pathToFollow.Nodes[currentWayPointId].position;
     }
 
     private void Update()
@@ -53,15 +59,15 @@ public class PlayerPathMove : MonoBehaviour {
         CheckInput();
         if (moveSpeed > 0)
         {
-            float distance = Vector3.Distance(pathToFollow.Nodes[currentWayPointId].position, transform.position);
-            transform.position = Vector3.MoveTowards(transform.position, pathToFollow.Nodes[currentWayPointId].position, Time.deltaTime * moveSpeed * WalkAnim);
+            float distance = Vector3.Distance(pathToFollow.Nodes[CurrentWayPointId].position, transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, pathToFollow.Nodes[CurrentWayPointId].position, Time.deltaTime * moveSpeed * WalkAnim);
 
 
             if (distance <= reachDistance)
             {
 
-                LastWayPointId = currentWayPointId;
-                currentWayPointId += moveDirection;
+                LastWayPointId = CurrentWayPointId;
+                CurrentWayPointId += moveDirection;
 
             }
         }
@@ -87,7 +93,8 @@ public class PlayerPathMove : MonoBehaviour {
         }
         else
         {
-            SpawnNodeId = pathToFollow.Nodes.Count - 1;
+            GetPathToFollow();
+            SpawnNodeId = pathToFollow.Nodes.Count - 2;
         }
     }
 
@@ -100,7 +107,7 @@ public class PlayerPathMove : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.A) && enabledMove)
         {
-            if (currentWayPointId > LastWayPointId)
+            if (CurrentWayPointId > LastWayPointId)
             {
                 ChangeDirection(-1);
             }
@@ -109,7 +116,7 @@ public class PlayerPathMove : MonoBehaviour {
 
         else if (Input.GetKey(KeyCode.D) && enabledMove)
         {
-            if (currentWayPointId < LastWayPointId)
+            if (CurrentWayPointId < LastWayPointId)
             {
                 ChangeDirection(1);
             }
@@ -149,8 +156,8 @@ public class PlayerPathMove : MonoBehaviour {
 
     void ChangeDirection(int direction)
     {
-        currentWayPointId = LastWayPointId;
-        LastWayPointId = currentWayPointId + moveDirection;
+        CurrentWayPointId = LastWayPointId;
+        LastWayPointId = CurrentWayPointId + moveDirection;
         moveDirection = direction;
         anim.SetBool("Walking", false);
         flipped = true;
@@ -158,14 +165,26 @@ public class PlayerPathMove : MonoBehaviour {
 
     void CheckMovement()
     {
-        if (currentWayPointId < 0 || currentWayPointId >= pathToFollow.Nodes.Count)
+        if (CurrentWayPointId < 0 || CurrentWayPointId >= pathToFollow.Nodes.Count)
         {
-            currentWayPointId = LastWayPointId;
+            CurrentWayPointId = LastWayPointId;
             moveSpeed = 0;
         }
         else
         {
             Walk();
         }
+    }
+    public int GetCurrentWayPoint()
+    {
+        return CurrentWayPointId;
+    }
+    public int GetNodeLength()
+    {
+        return pathToFollow.Nodes.Count;
+    }
+    public Transform GetNode(int index)
+    {
+        return pathToFollow.Nodes[index];
     }
 }
