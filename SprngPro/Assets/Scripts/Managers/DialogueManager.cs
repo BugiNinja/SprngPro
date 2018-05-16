@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour {
 
     private string[] dialogLines;
     public List<int> dialogueStartLines;
+    public List<int> RandomStartingLines;
 
     public bool InChoice = false;
     private int choiceIndex;
@@ -62,6 +63,10 @@ public class DialogueManager : MonoBehaviour {
         {
             if (dialogLines[i].StartsWith("#" + conI ))
             {
+                if(dialogLines[i+1].StartsWith(".2"))
+                {
+                    RandomStartingLines.Add(i + 1);
+                }
                 dialogueStartLines.Add(i + 1);
                 conI++;
             }
@@ -133,6 +138,13 @@ public class DialogueManager : MonoBehaviour {
     public void StartDiealogue(int DialogueIndex)
     {
         currentLine = dialogueStartLines[DialogueIndex - 1];
+        CheckDialogue();
+        EnableTextBox();
+        
+    }
+    public void StartRandom()
+    {
+        currentLine = RandomStartingLines[Random.Range(0,RandomStartingLines.Count)];
         CheckDialogue();
         EnableTextBox();
     }
