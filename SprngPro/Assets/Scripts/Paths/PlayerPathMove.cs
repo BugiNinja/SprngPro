@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerPathMove : MonoBehaviour {
 
-    private AudioManager audioManager;
     private FileManager fileManager;
     public Animator anim;
 
@@ -32,7 +31,6 @@ public class PlayerPathMove : MonoBehaviour {
     {
         flipped = false;
 
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
         if (!fileManager)
         {

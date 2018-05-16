@@ -3,8 +3,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class Sound {
-
     public string SoundName;
+    public string SourceObjectName;
 
     public AudioClip Clip;
 
@@ -17,13 +17,6 @@ public class Sound {
 
     public bool AreaEffect;
 
-    [Range(0f, 1f)]
-    public float SpatialBlend;
-    [Range(0f, 1000000f)]
-    public float MinDistance;
-    [Range(0f, 1000000f)]
-    public float MaxDistance;
-
-    [HideInInspector]
+    //[HideInInspector]
     public AudioSource Source;
 }

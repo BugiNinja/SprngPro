@@ -32,17 +32,28 @@ public class AudioManager : MonoBehaviour {
 
         foreach (Sound s in Sounds)
         {
-            s.Source = gameObject.AddComponent<AudioSource>();
+            try
+            {
+                s.Source = GameObject.Find(s.SourceObjectName).AddComponent<AudioSource>();
+            }
+            catch
+            {
+                s.Source = gameObject.AddComponent<AudioSource>();
+            }
+
             s.Source.clip = s.Clip;
 
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
             s.Source.pitch = s.Pitch;
             s.Source.loop = s.Loop;
 
-            s.Source.rolloffMode = AudioRolloffMode.Linear;
-            s.Source.spatialBlend = s.SpatialBlend;
-            s.Source.minDistance = s.MinDistance;
-            s.Source.maxDistance = s.MaxDistance;
+            if (s.AreaEffect)
+            {
+                s.Source.spatialBlend = Master.SpatialBlend;
+                s.Source.rolloffMode = AudioRolloffMode.Linear;
+                s.Source.minDistance = Master.MinDistance;
+                s.Source.maxDistance = Master.MaxDistance;
+            }
         }
     }
 
@@ -50,6 +61,7 @@ public class AudioManager : MonoBehaviour {
     {
         PlaySound("WindAmbient");
         PlaySound("CrowdAmbient");
+        PlaySound("BS_Fire");
         //PlayMusic("");
     }
 
@@ -70,9 +82,12 @@ public class AudioManager : MonoBehaviour {
             s.Source.volume = s.Volume * Master.Volume * Master.SoundVolume;
             s.Source.pitch = s.Pitch;
 
-            s.Source.spatialBlend = s.SpatialBlend;
-            s.Source.minDistance = s.MinDistance;
-            s.Source.maxDistance = s.MaxDistance;
+            if (s.AreaEffect)
+            {
+                s.Source.spatialBlend = Master.SpatialBlend;
+                s.Source.minDistance = Master.MinDistance;
+                s.Source.maxDistance = Master.MaxDistance;
+            }
         }
     }
 
