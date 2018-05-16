@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
-    public int dialogue;
+    public int Dialogue;
+    public bool Random;
     private DialogueManager Dialog;
 
     void Start () {
@@ -15,17 +16,25 @@ public class Interactable : MonoBehaviour {
 
 	public void Interact()
     {
-        if (Dialog.InChoices())
+        if (Random)
         {
-            Dialog.PickChoice();
-        }
-        else if (Dialog.InDialog())
-        {
-            Dialog.NextLine();
+            Dialog.StartRandom();
+
         }
         else
         {
-            Dialog.StartDiealogue(dialogue);
+            if (Dialog.InChoices())
+            {
+                Dialog.PickChoice();
+            }
+            else if (Dialog.InDialog())
+            {
+                Dialog.NextLine();
+            }
+            else
+            {
+                Dialog.StartDiealogue(Dialogue);
+            }
         }
     }
 
@@ -35,6 +44,7 @@ public class Interactable : MonoBehaviour {
     }
     public void SwitchDialog(int dialogueIndex)
     {
-        dialogue = dialogueIndex;
+        Dialogue = dialogueIndex;
     }
+    
 }
