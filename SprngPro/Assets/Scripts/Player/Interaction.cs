@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour {
 
+    TextBoxCanvas textBox;
+
     private int interactableCount;
     public List<Interactable> inter;
     private int interactWith = 0;
     public DialogueManager Dialog;
 
     private void Start () {
+        textBox = GameObject.Find("TextBoxCanvas").GetComponent<TextBoxCanvas>();
         Dialog = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         interactableCount = -1;
 	}
