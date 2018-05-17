@@ -76,7 +76,7 @@ public class MenuOptions : MonoBehaviour {
 
     public void LoadFile(int n)
     {
-        newScene.ChangeScene(1);
+        newScene.ChangeScene(2);
         fileManager.LoadGame(n);
     }
 

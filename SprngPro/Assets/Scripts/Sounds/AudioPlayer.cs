@@ -21,6 +21,6 @@ public class AudioPlayer : MonoBehaviour {
 
     void MakeHammerSound()
     {
-        audioManager.PlaySound(audioManager.RandomSoundName(9, 15), 0.5f, 1);
+        audioManager.PlaySound(audioManager.RandomSoundName(11, 17), 0.5f, 1);
     }
 }
