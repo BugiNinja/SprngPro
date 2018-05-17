@@ -1,147 +1,366 @@
 
 #1
+.1
+Hey, that's my home! What's he doing there?
+.1
+"Oi! Get off my box!"
 .3
-Hey this place is now mine get hell out.
+"Nuh uh, a box this cozy belongs to a fine young gentleman!"
+.3
+"And that's me, you ass."
 -
 +1
-Fight for your place
+Why?
 +2
-Run away
+Fight for your home.
 +3
-Why?!
+Run away.
 -
 +1
+.3
+"I don’t need to explain myself!"
+.3
+"So sod off!"
+!
++2
+.1
+You dare to fight back, but you get badly beaten.
+.1
+You don't feel too well.
 ?1
 !
-+2
-.1
-Don't you dare to come back! This is my place now.
-!
 +3
-.1
-I don't need to explain myself to you, now get out or i will punch you!
-_
--
-+1
-Fight for your place
-+2
-Run away
--
-+1
-?1
-!
-+2
-.1
-Don't you dare to come back! This is my place now.
+.3
+“That’s what I thought!”
 !
 _
 !
 #2
 .5
-Hey prat could do me favor?
+“Hey, kid! Have a second?”
 -
 +1
-Sure
+“What do I get from this?”
 +2
-Not right now
+“Sure.”
 +3
-What I get from this?
+“Not right now.”
 -
 +1
 .5
-I am too busy to get food myself right now so, get me some food from the general store at the market
-?2
-!
+“Well, uh…”
+.5
+“I haven’t thought about that yet…”
+.5
+“How about that little hammer over there?”
+.5
+“You could use that in your plays I think!”
 +2
 .5
-Oh maybe later then…
-?3
-!
-+3
+“Well you can’t stop working when the iron’s hot, heh!”
 .5
-Umm…
+“And as you can see I’m just hammering away!”
 .5
-Hmm…
+“…”
 .5
-Maybe I Could give that dusty old hammer over there.
-.5
-Is that enough, prat?
-_
--
-+1
-That'll do
-+2
-I need to think about this
--
-+1
-.5
-I am too busy to get food myself right now so, get me some food from the general store at the market.
-?2
-+2
+“So… could you fetch me some meat from the market?”
 .1
-There is no rush, so take your time
-?3
+The blacksmith gives you some coins.
+?2
++3
+.5
+“Oh, maybe later then.”
 _
 !
 #3
 .5
-Do you have time to fetch that meat for me?
+“Do you have time to fetch that meat for me?”
 -
 +1
-Sure
+“What do I get from this?”
 +2
-Not right now
+“Sure.”
 +3
-What I get from this?
+“Not right now."
 -
 +1
 .5
-I am too busy to get food myself right now so, get me some food from the general store at the market
-?2
+“Well, uh…”
+.5
+“I haven’t thought about that yet…”
+.5
+“How about that little hammer over there?”
+.5
+“You could use that in your plays I think!”
 !
 +2
 .5
-Oh maybe later then…
-?3
+“Well you can’t stop working when the iron’s hot, heh!”
+.5
+“And as you can see I’m just hammering away!
+.5
+“…”
+.5
+“So… could you fetch me some meat from the market?”
+.1
+The blacksmith gives you some coins.
 !
 +3
 .5
-Umm…
-.5
-Hmm…
-.1
-Maybe I Could give that dusty old hammer over there.
-.5
-Is that enough, prat?
-_
--
-+1
-That'll do
-+2
-I need to think about this
--
-+1
-.5
-I am too busy to get food myself right now so, get me some food from the general store at the market.
-?2
-+2
-.1
-There is no rush, so take your time
-?3
+“Oh, maybe later then.”
+!
 _
 !
 #4
 .1
-I Could try to steal that meat, so i can have the money and the meat
+“Hey trader.”
 .1
-I have to steal when he's not looking, hopefully this works...
+They don’t seem to pay attention to you.
+-
++1
+“Hey trader!”
++2
+Look at the trader.
+-
++1
 .1
-or maybe ill play safe...
+You get no answer.
 .1
-hmm...
+“Hey I’d like to buy some meat.”
+.1
+Still, no answer.
+.1
+“Is this how you treat your customers?”
+.4
+“Well, you don’t look like a customer to me.”
+.4
+“I bet that you don’t even have anything to pay with.”
+.4
+“So stop wasting my time with this nonsense!
+.1
+“But look! I have some coins.”
+.1
+You show the trader your money.
+.4
+“Where did you- Well, frankly
+.4
+“Money is always money, so meat it is.”
+.1
+The trader takes your coins and gives you meat in exchange.
+?4
++2
+.1
+Looks like he’s selling a lot of stuff.
+.1
+Also a lot of garbage.
+!
+!
+!
+!
+!
+!
+_
+!
 !
 #5
 .1
-I have no reason to talk with that shopkeeper, I Should get some coins first if I want to buy anything from him.
+"Hey trader."
+.1
+They don’t seem to pay attention to you.
+-
++1
+“Hey trader!”
++2
+Look at the trader.
+-
++1
+.1
+You get no answer.
+.1
+“Hey I’d like to buy some meat.”
+.1
+Still, no answer
+.1
+"Is this how you treat your customers?”
+.4
+“Well, you don’t look like a customer to me.”
+.4
+“I bet that you don’t even have anything to pay with.”
+.4
+“So stop wasting my time with this nonsense!”
+.1
+"I just get some meat?”
+.4
+“Listen, brat
+ I don’t have time for this.”
+.4
+“When you don’t have anything, don’t come asking for my stuff.”
 !
++2
+.1
+Looks like he’s selling a lot of stuff.
+.1
+Also a lot of garbage.
 !
+_
+!
+#6
+.4
+“You got your meat, right?”
+.4
+“If you want some more you better show some coin!”
+!
+#7
+.5
+“Did you fetch the meat kid?”
+.1
+“Where was the trader again?”
+.5
+“Oh well…”
+.5
+“He’s at the center of the marketplace.”
+.5
+“He’s a loud young gentleman-”
+.5
+“-or that’s what he looks like.”
+.5
+“It has a small sign that tells Edward’s General Store."
+.1
+Does he think that I can read?
+.5
+“That should help you find him.”
+!
+#8
+.5
+“Did you fetch the meat kid?”
+.1
+“Yeah I got it.”
+.5
+“Great!”
+.5
+“Here’s the hammer that I promised you.”
+.5
+“Sorry that I can’t give you anything better.
+.1
+The blacksmith gives you a little hammer.
+?5
+!
+#9
+.3
+“What did I tell you!”
+.1
+“Please, just leave.”
+.3
+“Ha ha hah!”
+.3
+“Didn’t you learn your lesson last time?
+.3
+“This time I’ll show you!”
+.1
+You barely escape his fists and fall down.
+!
+#10
+.3
+“What did I tell you!”
+.1
+“This is my home now!”
+-
++1
+Throw the hammer.
++2
+Threat with the hammer.
++3
+“Please, just leave.”
++4
+“What about a trade?"
+-
++1
+.1
+“This is what you get!”
+.1
+The hammer misses, landing next to him.
+.3
+“Oh now you did it!”
+.1
+He picks up the hammer and
+beats you to pulp.
+?1
+!
++2
+.1
+“Leave now or… or!”
+.1
+“Or what? Hey, what are you doing-”
+?6
+!
++3
+.3
+“Ha ha hah!”
+.3
+“Didn’t you learn your lesson last time?”
+.3
+“This time I’ll show you!”
+.1
+You barely escape his fists and fall down.
+!
++4
+.1
+“I could give you this hammer if you leave.
+.3
+"What would I do with an old hammer?"
+.1
+“Well, uh…”
+.1
+“You could sell it?”
+.1
+“The trader at Edward’s General Store would surely be interested!”
+.3
+“I’m not sure if I trust you.”
+.3
+“But if I don’t get good money for this…”
+.3
+“…I’ll beat you up with my new hammer!”
+.1
+He takes the hammer from your hand and runs away.
+.1
+You finally have your home back.
+?1
+!
+_
+!
+#11
+.1
+You ready your hammer, and-
+-
++1
+Hit him in the arm.
++2
+Hit him in the head.
+-
++1
+.3
+“Aaargh!”
+.3
+“It hurts!”
+.1
+He runs away, crying.
+.1
+His arm looks funny.
+.1
+You finally have your home back.
+?7
+!
++2
+.3
+“S-stop it!”
+.1
+You hit him in the head.
+.1
+He falls to the ground, and he’s not moving.
+.1
+“I-I didn’t mean to-"
+?8
+!
+_
+!
+
