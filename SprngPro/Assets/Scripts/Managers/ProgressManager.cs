@@ -67,7 +67,7 @@ public class ProgressManager : MonoBehaviour {
 
     void Update ()
     {
-		
+        CheckTriggers();
 	}
     private void CheckTriggers()
     {
@@ -79,18 +79,75 @@ public class ProgressManager : MonoBehaviour {
         {
             //saa turpaan
         }
+        if (Triggers[9])
+        {
+            if (InteractableCharacters[0] != null)
+            {
+               
+                InteractableCharacters[0].SwitchDialog(9);
+            }
+            
+        }
         if (Triggers[2])
         {
             //saa kolikkeja
+            if(InteractableCharacters[2] != null)
+            {
+                InteractableCharacters[2].SwitchDialog(7);
+            }
+            if (InteractableCharacters[1] != null)
+            {
+                InteractableCharacters[1].SwitchDialog(4);
+            }
+            
         }
         if (Triggers[3])
         {
-            InteractableCharacters[2].SwitchDialog(3);//vaihda sepän dialogi
+            //vaihda sepän dialogi
         }
         if (Triggers[4])
         {
-            //vaihda meat interactio steal ominaisuudeksi
+            if (InteractableCharacters[2] != null)
+            {
+                InteractableCharacters[2].SwitchDialog(8);
+            }
+            
+            if (InteractableCharacters[1] != null)
+            {
+                InteractableCharacters[1].SwitchDialog(6);
+            }
+            
         }
+        if (Triggers[5])
+        {
+            if (InteractableCharacters[0] != null)
+            {
+                InteractableCharacters[0].SwitchDialog(10);
+            }
+            
+            if (InteractableCharacters[2] != null)
+            {
+                InteractableCharacters[2].SwitchDialog(12);
+            }
+            
+        }
+        if (Triggers[6])
+        {
+            if (InteractableCharacters[0] != null)
+            {
+                InteractableCharacters[0].SwitchDialog(11);
+            }
+        }
+        if (Triggers[7])
+        {
+            //voitto1
+        }
+        if (Triggers[8])
+        {
+            //voitto2
+        }
+        
+
     }
     public GameObject[] GetCharacters()
     {
