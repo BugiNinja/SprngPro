@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interaction : MonoBehaviour {
 
     TextBoxCanvas textBox;
-
+    public GameObject button;
     private int interactableCount;
     public List<Interactable> inter;
     private int interactWith = 0;
@@ -20,18 +20,20 @@ public class Interaction : MonoBehaviour {
 	private void Update () {
 		if(interactableCount > -1)
         {
+            
             if (Input.GetKeyDown(KeyCode.E))
             {
+                HideButton();
                 inter[interactWith].Interact();
             }
             if (Dialog.InChoices())
             {
-                if (Input.GetKeyDown(KeyCode.DownArrow))
+                if (Input.GetKeyDown(KeyCode.S))
                 {
                     
                     Dialog.SwitchChoice(1);
                 }
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                else if (Input.GetKeyDown(KeyCode.W))
                 {
                     Dialog.SwitchChoice(-1);
                 }
@@ -47,6 +49,10 @@ public class Interaction : MonoBehaviour {
                 {
                     SwitchInteractable(1);
                 }
+            }
+            else if (!Dialog.InDialog())
+            {
+                ShowButton();
             }
             for(int i = 0; i < inter.Count; i++)
             {
@@ -67,13 +73,23 @@ public class Interaction : MonoBehaviour {
             {
                 Interactable i = other.gameObject.GetComponent<Interactable>();
                 inter.Add(i);
-                if(inter != null)
+                button = GameObject.Find(i.gameObject.name + "/TextBoxCanvas/Button");
+                ShowButton();
+                if (inter != null)
                 {
                     interactableCount++;
                 }
             }
 
         }
+    }
+    private void ShowButton()
+    {
+        button.SetActive(true);
+    }
+    private void HideButton()
+    {
+        button.SetActive(false);
     }
 
 
@@ -82,6 +98,7 @@ public class Interaction : MonoBehaviour {
     {
         if (other.gameObject.tag == "Interactable" || other.gameObject.tag == "NPC")
         {
+            HideButton();
             Interactable i = other.gameObject.GetComponent<Interactable>();
             inter.Remove(i);
             interactableCount--;

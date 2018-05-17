@@ -22,10 +22,10 @@ public class TextBoxCanvas : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log(transform.parent.position.x);
+        //Debug.Log(transform.parent.position.x);
         if (transform.parent.position.x > initPosition.x)
         {
-            Debug.Log("hee");
+           // Debug.Log("hee");
         }
 
         if (transform.parent.position.x > transform.parent.position.x)
