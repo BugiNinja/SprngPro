@@ -20,7 +20,7 @@ public class PlayerPathMove : MonoBehaviour {
     public int LastWayPointId; //Tallennukseen
 
     private int moveDirection = 1; //1 = forward, -1 = backward 
-    private float moveSpeed = 0;
+    public float moveSpeed = 0;
     public float WalkAnim = 1;
     private float reachDistance = 1f;
 
