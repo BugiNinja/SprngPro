@@ -73,13 +73,22 @@ public class Interaction : MonoBehaviour {
             if (other.gameObject.GetComponent<Interactable>())
             {
                 Interactable i = other.gameObject.GetComponent<Interactable>();
-                inter.Add(i);
-                button = GameObject.Find(i.gameObject.name + "/TextBoxCanvas/Button");
-                ShowButton();
-                if (inter != null)
+                
+                if (i.IsTimed())
                 {
-                    interactableCount++;
+                    i.Interact();
                 }
+                else
+                {
+                    inter.Add(i);
+                    button = GameObject.Find(i.gameObject.name + "/TextBoxCanvas/Button");
+                    ShowButton();
+                    if (inter != null)
+                    {
+                        interactableCount++;
+                    }
+                }
+                
             }
 
         }

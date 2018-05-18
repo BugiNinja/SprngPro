@@ -5,8 +5,13 @@ using UnityEngine;
 public class Interactable : MonoBehaviour {
 
     public int Dialogue;
-    public bool Random;
+    public bool Timed;
+    public bool RandomChar;
     private DialogueManager Dialog;
+    
+    public enum CharTypes {Default, RichM, RichW, NiceM, PoorM, PoorW}
+
+    public CharTypes CharacterType;
 
     void Start () {
         Dialog = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
@@ -16,10 +21,27 @@ public class Interactable : MonoBehaviour {
 
 	public void Interact()
     {
-        if (Random)
+        if (Timed)
         {
-            Dialog.StartRandom();
-
+            Dialog.StartTimed(gameObject);
+           
+        }
+        else if (RandomChar)
+        {
+            
+            if (Dialog.InChoices())
+            {
+                Dialog.PickChoice();
+            }
+            else if (Dialog.InDialog())
+            {
+                Dialog.NextLine();
+            }
+            else
+            {
+                int type = (int)CharacterType;
+                Dialog.StartRandom(gameObject, type);
+            }
         }
         else
         {
@@ -38,6 +60,14 @@ public class Interactable : MonoBehaviour {
         }
     }
 
+    public bool IsTimed()
+    {
+        if (Timed)
+        {
+            return true;
+        }
+        return false;
+    }
     public void Dissable()
     {
         gameObject.SetActive(false);

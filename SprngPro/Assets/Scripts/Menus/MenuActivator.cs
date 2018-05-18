@@ -75,8 +75,7 @@ public class MenuActivator : MonoBehaviour
         }
         else
         {
-            inter.EnableInput(true);
-            ppm.EnableMovement(true);
+            
             Time.timeScale = 1;
         }
     }
@@ -91,6 +90,8 @@ public class MenuActivator : MonoBehaviour
             }
             else if (MenuActivated)
             {
+                inter.EnableInput(true);
+                ppm.EnableMovement(true);
                 MenuActivated = MenuLockedInScreen;
             }
         }

@@ -102,7 +102,7 @@ _
 .5
 “And as you can see I’m just hammering away!"
 .5
-“…”
+“ …”
 .5
 “So… could you fetch me some meat from the market?”
 .1
@@ -188,7 +188,8 @@ Still, no answer
 .1
 "I just get some meat?”
 .4
-“Listen, brat!"
+“Listen, brat
+ I don’t have time for this.”
 .4
 “When you don’t have anything, don’t come asking for my stuff.”
 !
@@ -287,8 +288,6 @@ beats you to pulp.
 “Leave now or… or!”
 .1
 “Or what? Hey, what are you doing-”
-?6
-!
 +3
 .3
 “Ha ha hah!”
@@ -323,6 +322,37 @@ You finally have your home back.
 ?1
 !
 _
+.1
+You ready your hammer and-
+-
++1
+Hit him in the arm.
++2
+Hit him in the head.
+-
++1
+.3
+“Aaargh!”
+.3
+“It hurts!”
+.1
+He runs away, crying.
+.1
+His arm looks funny.
+.1
+You finally have your home back.
++2
+.3
+“S-stop it!”
+.1
+You hit him in the head.
+.1
+He falls to the ground, and he’s not moving.
+.1
+“I-I didn’t mean to-”
+_
+.1
+"I just won the game! Wohoo!"
 !
 #11
 .1
@@ -367,10 +397,145 @@ _
 "I’ll be sure to pay you proper next time.”
 !
 
-.5
-"Thank you young lad!"
-.5
-"I’ll be sure to pay you proper next time.”
+
+#13
+.10
+"Where are your parents?"
+.10
+"...oh, you poor soul."
 !
-
-
+#14
+.10
+"Someone should take care of you."
+!
+#15
+.10
+"What is it?"
+!
+#16
+.10
+"Can I help you?"
+!
+#17
+.10
+"I'm sorry, I don't have enough to give you"
+!
+#18
+.9
+"I'm sorry."
+.9
+"I have nothing for you."
+!
+#19
+.9
+"Take care."
+!
+#20
+.9
+"Did you need something?"
+!
+#21
+.9
+"Can I be of help?"
+!
+#22
+.9
+"I hope you survive the winter..."
+!
+#23
+.7
+"Oh, just please leave me alone."
+.7
+"You make me look like a bad person!"
+!
+#24
+.7
+"I won't give you anything."
+!
+#25
+.7
+"…God the Father shall take care of you."
+!
+#26
+.7
+" ..."
+!
+#27
+.7
+"On your way, now."
+!
+#28
+.6
+"What an unsightly young child!"
+.6
+"Dress yourself!"
+!
+#29
+.6
+"Why are you strutting around looking like that?"
+.6
+"You should get a job!"
+!
+#30
+.6
+"Don't bother me."
+!
+#31
+.6
+" ..."
+!
+#32
+.6
+"Go and buy yourself a set of new attire!"
+.6
+"Oh wait, you're penniless!"
+.6
+"Ah hah hah""
+!
+#33
+.8
+"Hello little munchkin!"
+.8
+"What's your name?"
+.1
+" ..."
+.8
+"Oh, I'm terribly sorry!"
+!
+#34
+.8
+"It's cold breeze alright, be sure to hold on to your scarf!"
+!
+#35
+.8
+"Watch out for the ice!"
+!
+#36
+.8
+"If you can afford it, you should check out the Edward’s General Store."
+-
++1
+"Where is it?"
++2
+"Oh?"
+-
++1
+.8
+"The Edward’s General Store is at the back of the market."
+.8
+"You can't really miss it!"
+!
++2
+.8
+"Or maybe not, some of his items are not of the highest quality."
+.8
+"He's not a bad guy, really. I think."
+.8
+"But I'm pretty sure Edward is not his actual name."
+!
+_
+!
+#37
+.8
+"Take care."
+!

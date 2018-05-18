@@ -38,6 +38,10 @@ public class DialogueManager : MonoBehaviour {
     private bool Autowrite = false;
     private IEnumerator courutine;
 
+    private bool randomIsTalking;
+
+    private GameObject randomSpeakingChar;
+
     
 
     private void Start()
@@ -142,11 +146,47 @@ public class DialogueManager : MonoBehaviour {
         EnableTextBox();
         
     }
-    public void StartRandom()
+    public void StartTimed(GameObject speakingChar)
     {
-        currentLine = RandomStartingLines[Random.Range(0,RandomStartingLines.Count)];
+        if(randomIsTalking == false)
+        {
+            ChangeCharacter(speakingChar);
+            EnableTextBoxWithTimer();
+        }
+    }
+    public void StartRandom(GameObject speakingChar, int Charactertype)
+    {
+        int min_value=0;
+        int max_value=0;
+        switch (Charactertype)
+        {
+            case 1:
+                min_value = 28;
+                max_value = 32;
+                break;
+            case 2:
+                min_value = 23;
+                max_value = 27;
+                break;
+            case 3:
+                min_value = 33;
+                max_value = 37;
+                break;
+            case 4:
+                min_value = 18;
+                max_value = 22;
+                break;
+            case 5:
+                min_value = 13;
+                max_value = 17;
+                break;
+        }
+        randomSpeakingChar = speakingChar;
+        randomIsTalking = true;
+        currentLine = dialogueStartLines[Random.Range(min_value, max_value)];
         CheckDialogue();
         EnableTextBox();
+        
     }
 
     public void NextLine()
@@ -199,20 +239,47 @@ public class DialogueManager : MonoBehaviour {
     private void ChanceCharacter(int speakingChar)
     {
         DisableTextBox();
-        if (Characters[speakingChar] == null)
+        if (randomIsTalking)
         {
-            Debug.LogWarning(Characters[speakingChar] + " is not in scene! Player will speak instead");
-            textBox = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
-            dialogue = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            if(speakingChar != 1)
+            {
+                textBox = GameObject.Find(randomSpeakingChar.name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+                dialogue = GameObject.Find(randomSpeakingChar.name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            }
+            else
+            {
+                textBox = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+                dialogue = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            }
         }
+        
         else
         {
-            textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
-            dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            if (Characters[speakingChar] == null)
+            {
+                Debug.LogWarning(Characters[speakingChar] + " is not in scene! Player will speak instead");
+                textBox = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+                dialogue = GameObject.Find(Characters[0].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            }
+            else
+            {
+                textBox = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+                dialogue = GameObject.Find(Characters[speakingChar].name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+            }
         }
         EnableTextBox();
     }
-
+    private void ChangeCharacter(GameObject speakingChar)
+    {
+        textBox = GameObject.Find(speakingChar.name + "/TextBoxCanvas/TextBoxContainer/TextBg");
+        dialogue = GameObject.Find(speakingChar.name + "/TextBoxCanvas/TextBoxContainer/TextBg/Dialogue").GetComponent<Text>();
+    }
+    private void EnableTextBoxWithTimer()
+    {
+        textBox.SetActive(true);
+        randomIsTalking = true;
+        StartCoroutine(WaitToDissable());
+    }
     private void EnableTextBox()
     {
         textBox.SetActive(true);
@@ -314,5 +381,13 @@ public class DialogueManager : MonoBehaviour {
             yield return new WaitForSeconds(TextSpeed);
         }
         
+    }
+    public IEnumerator WaitToDissable()
+    {
+        
+        yield return new WaitForSeconds(3);
+        DisableTextBox();
+        randomIsTalking = false;
+
     }
 }
