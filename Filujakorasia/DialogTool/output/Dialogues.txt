@@ -102,7 +102,7 @@ _
 .5
 “And as you can see I’m just hammering away!"
 .5
-“…”
+“ …”
 .5
 “So… could you fetch me some meat from the market?”
 .1
@@ -188,7 +188,8 @@ Still, no answer
 .1
 "I just get some meat?”
 .4
-“Listen, brat!"
+“Listen, brat
+ I don’t have time for this.”
 .4
 “When you don’t have anything, don’t come asking for my stuff.”
 !
@@ -287,8 +288,6 @@ beats you to pulp.
 “Leave now or… or!”
 .1
 “Or what? Hey, what are you doing-”
-?6
-!
 +3
 .3
 “Ha ha hah!”
@@ -323,6 +322,37 @@ You finally have your home back.
 ?1
 !
 _
+.1
+You ready your hammer and-
+-
++1
+Hit him in the arm.
++2
+Hit him in the head.
+-
++1
+.3
+“Aaargh!”
+.3
+“It hurts!”
+.1
+He runs away, crying.
+.1
+His arm looks funny.
+.1
+You finally have your home back.
++2
+.3
+“S-stop it!”
+.1
+You hit him in the head.
+.1
+He falls to the ground, and he’s not moving.
+.1
+“I-I didn’t mean to-”
+_
+.1
+"I just won the game! Wohoo!"
 !
 #11
 .1
@@ -361,12 +391,6 @@ _
 !
 
 #12
-.5
-"Thank you young lad!"
-.5
-"I’ll be sure to pay you proper next time.”
-!
-
 .5
 "Thank you young lad!"
 .5
