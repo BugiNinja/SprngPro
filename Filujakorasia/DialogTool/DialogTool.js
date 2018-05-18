@@ -4,7 +4,7 @@ var arrDialog;
 var startinglines;
 var currentLine = 0;
 var Triggers;
-var Characters = ["Player","Satunnainen", "Pahapoika", "Kauppias", "Seppa"];
+var Characters = ["Player","Kertoja", "Pahapoika", "Kauppias", "Seppa", "RikasM", "RikasN", "MukavaM", "KoyhaM", "KoyhaN"];
 var currentDialog;
 
 function init() {
