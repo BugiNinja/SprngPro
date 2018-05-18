@@ -69,8 +69,10 @@ public class MenuActivator : MonoBehaviour
 
         if (OptionsActivated || MenuActivated || FileMenuActivated)
         {
-            inter.EnableInput(false);
-            ppm.EnableMovement(false);
+            if (inter != null) {
+                inter.EnableInput(false);
+                ppm.EnableMovement(false);
+            }
             Time.timeScale = 0;
         }
         else
