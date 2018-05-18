@@ -2,6 +2,7 @@
 
 public class FileManager : MonoBehaviour
 {
+    public bool EnableSaving;
     public int Health;
     public int WayPoint;
 
@@ -10,17 +11,24 @@ public class FileManager : MonoBehaviour
 
     public bool[] SaveSlots = new bool[4];
 
+    private ProgressManager pm;
+
     private void Awake()
     {
         Health = 3;
         WayPoint = 0;
         InitSlots();
     }
+    private void Start()
+    {
+        pm = FindObjectOfType<ProgressManager>();
+    }
 
     public void InitNewGame()
     {
         Health = 3;
         WayPoint = 0;
+        pm.ResetTriggers();
     }
 
     public void InitSlots()

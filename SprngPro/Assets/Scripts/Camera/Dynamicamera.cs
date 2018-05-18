@@ -15,13 +15,14 @@ public class Dynamicamera : MonoBehaviour {
     private SceneChange sm;
     public int NextSceneNumber;
     public int PrevSceneNumber;
+    private PlayerPathMove ppm;
 
     public float cameraDistance;
     private float MaxSize = 9;
     private float MinSize = 7;
     public float ScaleSpeed = 0.05f;
 
-    public Color fade;
+    Color fade;
     SpriteRenderer fadeSR;
 
     void Start()
@@ -36,6 +37,10 @@ public class Dynamicamera : MonoBehaviour {
         if(player == null)
         {
             Debug.LogWarning("player is missing or don't have player tag!");
+        }
+        else
+        {
+            ppm = player.GetComponent<PlayerPathMove>();
         }
         c = gameObject.GetComponent<Camera>();
         c.orthographicSize = MinSize;
@@ -108,6 +113,11 @@ public class Dynamicamera : MonoBehaviour {
         if(cameraDistance >= 0.7)
         {
             fadeDistance = cameraDistance * 10 - 7;
+            ppm.StartForceMovement();
+        }
+        else
+        {
+            ppm.StopForceMovement();
         }
         if(cameraDistance >= 0.9)
         {

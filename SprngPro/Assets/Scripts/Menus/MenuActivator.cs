@@ -7,6 +7,9 @@ public class MenuActivator : MonoBehaviour
     public Menu OptionsMenu;
     public Menu FileMenu;
 
+    private PlayerPathMove ppm;
+    private Interaction inter;
+
     public bool MenuActivated;
     public bool OptionsActivated;
     public bool FileMenuActivated;
@@ -17,6 +20,12 @@ public class MenuActivator : MonoBehaviour
         MainMenu = GameObject.Find("Menu").GetComponent<Menu>();
         OptionsMenu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
         FileMenu = GameObject.Find("FileMenu").GetComponent<Menu>();
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if(p != null)
+        {
+            ppm = p.GetComponent<PlayerPathMove>();
+            inter = p.GetComponent<Interaction>();
+        }
         MenuActivated = MenuLockedInScreen;
         OptionsActivated = false;
         FileMenuActivated = false;
@@ -60,10 +69,14 @@ public class MenuActivator : MonoBehaviour
 
         if (OptionsActivated || MenuActivated || FileMenuActivated)
         {
+            inter.EnableInput(false);
+            ppm.EnableMovement(false);
             Time.timeScale = 0;
         }
         else
         {
+            inter.EnableInput(true);
+            ppm.EnableMovement(true);
             Time.timeScale = 1;
         }
     }

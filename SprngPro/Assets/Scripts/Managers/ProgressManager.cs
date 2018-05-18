@@ -19,7 +19,7 @@ public class ProgressManager : MonoBehaviour {
         UpdateInteractable();
         
     }
-	
+
     public void UpdateCharacters()
     {
         GameObject[] NPC = GameObject.FindGameObjectsWithTag("NPC");

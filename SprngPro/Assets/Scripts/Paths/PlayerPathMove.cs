@@ -23,6 +23,7 @@ public class PlayerPathMove : MonoBehaviour {
     public float moveSpeed = 0;
     public float WalkAnim = 1;
     private float reachDistance = 1f;
+    private bool forceMovement;
 
     public bool TakeAStep;
     private bool flipped;
@@ -93,12 +94,18 @@ public class PlayerPathMove : MonoBehaviour {
         {
             GetPathToFollow();
             SpawnNodeId = pathToFollow.Nodes.Count - 2;
+            ChangeDirection(-1);
+            Flip();
         }
     }
 
     private void CheckInput()
     {
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) || flipped)
+        if (forceMovement)
+        {
+            ForceMovement();
+        }
+        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) || flipped)
         {
             anim.SetBool("Walking", false);
             moveSpeed = 0;
@@ -146,7 +153,20 @@ public class PlayerPathMove : MonoBehaviour {
         enabledMove = true;
         moveSpeed = WalkSpeed;
     }
-
+    void ForceMovement()
+    {
+        anim.SetBool("Walking", true);
+        enabledMove = true;
+        moveSpeed = WalkSpeed;
+    }
+    public void StartForceMovement()
+    {
+        forceMovement = true;
+    }
+    public void StopForceMovement()
+    {
+        forceMovement = false;
+    }
     void Flip()
     {
         transform.localRotation *= Quaternion.Euler(0f, 180f, 0f);

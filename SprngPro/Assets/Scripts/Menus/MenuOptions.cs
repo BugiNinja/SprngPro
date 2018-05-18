@@ -15,6 +15,10 @@ public class MenuOptions : MonoBehaviour {
         }
         newScene = GameObject.Find("SceneManager").GetComponent<SceneChange>();
         activator = GameObject.Find("MenuActivator").GetComponent<MenuActivator>();
+        if (!activator)
+        {
+            Debug.Log("MenuActivator doesn't exist!");
+        }
     }
 
     public void NewGame()

@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour {
     public List<Interactable> inter;
     private int interactWith = 0;
     public DialogueManager Dialog;
+    private bool dissableInput;
 
     private void Start () {
         textBox = GameObject.Find("TextBoxCanvas").GetComponent<TextBoxCanvas>();
@@ -21,19 +22,19 @@ public class Interaction : MonoBehaviour {
 		if(interactableCount > -1)
         {
             
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !dissableInput)
             {
                 HideButton();
                 inter[interactWith].Interact();
             }
             if (Dialog.InChoices())
             {
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) && !dissableInput)
                 {
                     
                     Dialog.SwitchChoice(1);
                 }
-                else if (Input.GetKeyDown(KeyCode.W))
+                else if (Input.GetKeyDown(KeyCode.W) && !dissableInput)
                 {
                     Dialog.SwitchChoice(-1);
                 }
@@ -90,6 +91,18 @@ public class Interaction : MonoBehaviour {
     private void HideButton()
     {
         button.SetActive(false);
+    }
+    public void EnableInput(bool state)
+    {
+        if(state == true)
+        {
+            dissableInput = false;
+        }
+        else
+        {
+            dissableInput = true;
+        }
+        
     }
 
 
