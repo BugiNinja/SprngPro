@@ -207,6 +207,7 @@ public class DialogueManager : MonoBehaviour {
         else if (dialogLines[currentLine].StartsWith("!"))
         {
             DisableTextBox();
+            randomIsTalking = false;
         }
         else if (dialogLines[currentLine].StartsWith("-"))
         {
