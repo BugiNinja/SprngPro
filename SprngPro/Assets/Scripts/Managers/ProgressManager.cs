@@ -10,6 +10,7 @@ public class ProgressManager : MonoBehaviour {
     public Interactable[] InteractableObjects;
     public bool[] Triggers = new bool[10];
     public Dictionary<string, int> Inventory = new Dictionary<string, int>(); //Ehkä tallennukseen
+    private PlayerStats ps;
 
     void Start()
     {
@@ -29,6 +30,10 @@ public class ProgressManager : MonoBehaviour {
         if(Characters[0] == null)
         {
             Debug.LogWarning("Player missing!");
+        }
+        else
+        {
+            ps = Characters[0].GetComponent<PlayerStats>();
         }
         Characters[1] = null;
         for (int i = 0; i < NPCNames.Length; i++)
@@ -78,6 +83,7 @@ public class ProgressManager : MonoBehaviour {
         if (Triggers[1])
         {
             //saa turpaan
+            ps.Die();
         }
         if (Triggers[9])
         {
