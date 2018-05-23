@@ -8,14 +8,13 @@ public class PlayerStats : MonoBehaviour {
     //private GameObject deathScreen;
 
     private bool isHit;
-    private bool isDead;
 
     public int HealthMax;
     public int HealthCurrent; //Tallennukseen
 
 	void Start () {
         //fileManager = GameObject.Find("FileManager").GetComponent<FileManager>();
-        /*if (!fileManager)
+        /* if (!fileManager)
         {
             Debug.Log("FileManager doesn't exist!");
         }
@@ -36,7 +35,6 @@ public class PlayerStats : MonoBehaviour {
         }*/
 
         isHit = false;
-        isDead = false;
 
         //HealthMax = 3;
         //HealthCurrent = fileManager.Health;
@@ -44,24 +42,15 @@ public class PlayerStats : MonoBehaviour {
 	
 	void Update () {
         TakeDamage();
-        CheckIfDead();
-        Die();
+        //CheckIfDead();
     }
 
     public void TakeDamage()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            isHit = true;
-            FindObjectOfType<AudioManager>().PlaySound("TakeDamage");
-        }
-
-        if (isHit)
-        {
-            HealthCurrent--;
-            //fileManager.Health--;
-            isHit = false;
-        }
+        
+        HealthCurrent--;
+        isHit = false;
+        
     }
 
     public int GetHealth()
@@ -73,18 +62,15 @@ public class PlayerStats : MonoBehaviour {
     {
         if(HealthCurrent <= 0)
         {
-            HealthCurrent = 0;
-            isDead = true;
+            Die();
         }
     }
 
     public void Die()
     {
-        if(isDead)
-        {
-            //deathScreen.gameObject.SetActive(true);
-            //anim.Play("AppearDeathScreen");
-            Time.timeScale = 0;
-        }
+        //deathScreen.gameObject.SetActive(true);
+        //anim.Play("AppearDeathScreen");
+        Debug.Log("juu died");
+        Time.timeScale = 0;
     }
 }
