@@ -11,6 +11,7 @@ public class TextBoxCanvas : MonoBehaviour {
     public float XValue;
     private Vector3 initPosition;
     private Vector3 currentPosition;
+    public bool EnablepositionSwap;
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class TextBoxCanvas : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Textbox")
+        if(other.tag == "Textbox" && EnablepositionSwap)
         {
             initPosition.x = transform.position.x;
         }
@@ -43,7 +44,7 @@ public class TextBoxCanvas : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Textbox")
+        if (other.tag == "Textbox" && EnablepositionSwap)
         {
             if (coll.bounds.max.x > other.transform.parent.position.x && transform.parent.position.x < other.transform.parent.position.x)
             {
@@ -67,7 +68,7 @@ public class TextBoxCanvas : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Textbox")
+        if(other.tag == "Textbox" && EnablepositionSwap)
         {
             transform.localPosition = new Vector3(0f, transform.localPosition.y, 0f);
         }
