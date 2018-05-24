@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TextBoxCanvas : MonoBehaviour {
-    Quaternion iniRot;
+    public Quaternion iniRot;
     RectTransform rect;
     BoxCollider coll;
     PlayerPathMove move;
@@ -14,7 +14,8 @@ public class TextBoxCanvas : MonoBehaviour {
 
     void Start()
     {
-        iniRot = transform.rotation;
+        iniRot = new Quaternion(0, 0, 0, 1);
+        //iniRot = transform.rotation;
         rect = gameObject.GetComponent<RectTransform>();
         coll = gameObject.GetComponent<BoxCollider>();
         move = GameObject.Find("Player").GetComponent<PlayerPathMove>();
