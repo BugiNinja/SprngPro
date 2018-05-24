@@ -43,25 +43,8 @@ public class PlayerStats : MonoBehaviour {
 	}
 	
 	void Update () {
-        TakeDamage();
         CheckIfDead();
         Die();
-    }
-
-    public void TakeDamage()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            isHit = true;
-            FindObjectOfType<AudioManager>().PlaySound("TakeDamage");
-        }
-
-        if (isHit)
-        {
-            HealthCurrent--;
-            //fileManager.Health--;
-            isHit = false;
-        }
     }
 
     public int GetHealth()

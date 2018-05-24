@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fcf73869c03be47b3b9476e7d473a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 0}
   inter: []
   Dialog: {fileID: 0}
 --- !u!114 &114097064556699028
@@ -1719,6 +1720,7 @@ MonoBehaviour:
   SpawnNodeId: 3
   WalkSpeed: 2
   LastWayPointId: 0
+  moveSpeed: 0
   WalkAnim: 1
   TakeAStep: 0
 --- !u!114 &114571244841556292
@@ -2030,6 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4c21f7b4eb6f44b8af19bc5b90f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  XValue: 0
 --- !u!137 &137042033288699606
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

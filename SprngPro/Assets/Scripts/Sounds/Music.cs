@@ -10,8 +10,6 @@ public class Music
 
     [Range(0f, 1f)]
     public float Volume;
-    [Range(0.1f, 3f)]
-    public float Pitch;
 
     public bool Loop;
 

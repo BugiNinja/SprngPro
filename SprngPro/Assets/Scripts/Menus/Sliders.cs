@@ -84,8 +84,8 @@ public class Sliders : MonoBehaviour {
             }
         }
 
-        MasterValue = master.value;
-        MusicValue = music.value;
-        SoundValue = sound.value;
+        am.MasterVol = master.value;
+        am.MusicVol = music.value;
+        am.SoundVol = sound.value;
     }
 }

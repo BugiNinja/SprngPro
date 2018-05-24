@@ -4,7 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class Sound {
     public string SoundName;
-    public string SourceObjectName;
 
     public AudioClip Clip;
 
@@ -14,8 +13,11 @@ public class Sound {
     public float Pitch;
 
     public bool Loop;
+    public bool PlayOnAwake;
 
-    public bool AreaEffect;
+    public bool SpatialBlend;
+    public int MinDistance;
+    public int MaxDistance;
 
     //[HideInInspector]
     public AudioSource Source;

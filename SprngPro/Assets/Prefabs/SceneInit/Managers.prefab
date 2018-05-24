@@ -51,7 +51,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4980356411884228}
-  - component: {fileID: 114615459835078886}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -201,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d483882f2e50a4687068f40d617694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnableSaving: 0
   Health: 0
   WayPoint: 0
   FileMenuOpened: 0
@@ -230,165 +230,6 @@ MonoBehaviour:
   choiceLeftPadding: 25
   UseAutoText: 0
   TextSpeed: 0.1
---- !u!114 &114615459835078886
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1328003284481098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 661123b196ac61b4095d1b26a68ad01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sounds:
-  - SoundName: Step1
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: 58edd795b0597f54489dc41248d8ff65, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step2
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: 58b9ea0c88b7c4f439c4d235f82682b8, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step3
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: ac4c9f9a1b9285c40aa3e730d9c97df8, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step4
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: e939c7f202c27c541a63c6b46b8a8ba6, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step5
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: 1c6c3145c03536d4bb53116d124752e1, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step6
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: 92735c6658839d14f92e226ca9815cd5, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: Step7
-    SourceObjectName: Player
-    Clip: {fileID: 8300000, guid: 8af003759ddd46d47a7a257ea73855c7, type: 3}
-    Volume: 0.147
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: TakeDamage
-    SourceObjectName: 
-    Clip: {fileID: 8300000, guid: 35ebc691198fbb54aa9b10fb7df78eba, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: WindAmbient
-    SourceObjectName: 
-    Clip: {fileID: 8300000, guid: a4a9ae9245acd294aa9427dac733bfc7, type: 3}
-    Volume: 0.416
-    Pitch: 1
-    Loop: 1
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: CrowdAmbient
-    SourceObjectName: 
-    Clip: {fileID: 8300000, guid: 0a335a4dc855d2c438c399a19cfc1f39, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 1
-    AreaEffect: 0
-    Source: {fileID: 0}
-  - SoundName: BS_Hit1
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: 9ff8a98e8939f0b4d9e2a39c546f7bff, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit2
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: d30c2eadddd2a974daf21be4c5383cca, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit3
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: d6ae6a56e538c7f4086d606087b1f119, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit4
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: bda1780b6fd0a7946a252ad1f6019533, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit5
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: 32fe62e063bed004eafe258fdd44f3f8, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit6
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: 30e650dfc2641fc4492b7b2c712fec82, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  - SoundName: BS_Hit7
-    SourceObjectName: Blacksmith
-    Clip: {fileID: 8300000, guid: dfe54adf53fe9444dbc58a5420d92d11, type: 3}
-    Volume: 0.14
-    Pitch: 1
-    Loop: 0
-    AreaEffect: 1
-    Source: {fileID: 0}
-  Tracks: []
-  Master:
-    Volume: 1
-    MusicVolume: 1
-    SoundVolume: 1
-    SpatialBlend: 1
-    MinDistance: 3
-    MaxDistance: 23
-  MasterVol: 0
-  MusicVol: 0
-  SoundVol: 0
 --- !u!114 &114615565719592746
 MonoBehaviour:
   m_ObjectHideFlags: 1
