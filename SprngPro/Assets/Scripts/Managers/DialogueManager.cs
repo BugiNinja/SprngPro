@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour {
 
     public int choiceLeftPadding = 25;
     private int leftPaddingDefault;
-    private int indicatorOffset = -23;
+    private int indicatorOffset = -33;
     private GameObject indicator;
 
     public bool UseAutoText = false;
