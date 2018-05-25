@@ -17,7 +17,7 @@ public class Sliders : MonoBehaviour {
 
     void Start () {
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        menu = GameObject.Find("OptionsMenu").GetComponent<Menu>();
+        menu = GameObject.Find("SoundOptionsMenu").GetComponent<Menu>();
 
         master = GameObject.Find("Slider1").GetComponent<Slider>();
         music = GameObject.Find("Slider2").GetComponent<Slider>();

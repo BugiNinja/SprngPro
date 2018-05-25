@@ -27,10 +27,10 @@ public class MenuOptions : MonoBehaviour {
         newScene.ChangeScene(2);
     }
 
-    public void SaveLoadGame()
+    /*public void SaveLoadGame()
     {
         activator.FileMenuActivated = true;
-    }
+    }*/
 
     public void Continue()
     {
@@ -44,7 +44,7 @@ public class MenuOptions : MonoBehaviour {
 
     public void Credits()
     {
-        Debug.Log("Credits");
+        newScene.ChangeScene(4);
     }
 
     public void Back()
@@ -54,11 +54,11 @@ public class MenuOptions : MonoBehaviour {
             activator.OptionsActivated = false;
             activator.MenuActivated = true;
         }
-        else if (activator.FileMenuActivated)
+        /*else if (activator.FileMenuActivated)
         {
             activator.FileMenuActivated = false;
             activator.MenuActivated = true;
-        }
+        }*/
     }
 
     public void ExitGame()

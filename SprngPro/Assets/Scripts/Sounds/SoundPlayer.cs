@@ -101,6 +101,7 @@ public class SoundPlayer : MonoBehaviour {
     {
         foreach(Sound s in Sounds)
         {
+            Debug.Log(s.SoundName);
             s.Source.volume = s.Volume * am.MasterVol * am.SoundVol;
         }
         am.UsedSliders = false;

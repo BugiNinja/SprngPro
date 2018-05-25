@@ -11,7 +11,8 @@ public class Menu : MonoBehaviour {
     private int optionCount;
     public int[] MenuIndex;
     public int N;
-    public Vector3 OptionPosition;
+    public Vector3 OptionPositionLeft;
+    public Vector3 OptionPositionRight;
 
     public int SliderNum;
 
@@ -28,7 +29,9 @@ public class Menu : MonoBehaviour {
         N = 0;
 
         OptionName = transform.GetChild(0).GetChild(N).name;
-        OptionPosition = transform.GetChild(0).Find(OptionName).position;
+
+        OptionPositionLeft = new Vector3(transform.GetChild(0).Find(OptionName).GetComponent<BoxCollider>().bounds.min.x, transform.GetChild(0).Find(OptionName).position.y, 0);
+        OptionPositionRight = new Vector3(transform.GetChild(0).Find(OptionName).GetComponent<BoxCollider>().bounds.max.x, transform.GetChild(0).Find(OptionName).position.y, 0);
 
         SliderNum = 0;
 
@@ -54,10 +57,14 @@ public class Menu : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.S))
         {
             N++;
+            CheckIndexCap();
+            ChooseOption();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             N--;
+            CheckIndexCap();
+            ChooseOption();
         }
     }
 
@@ -76,24 +83,26 @@ public class Menu : MonoBehaviour {
     void ChooseOption()
     {
         OptionName = transform.GetChild(0).GetChild(N).name;
-        OptionPosition = transform.GetChild(0).GetChild(N).position;
+
+        OptionPositionLeft = new Vector3(transform.GetChild(0).Find(OptionName).GetComponent<BoxCollider>().bounds.min.x, transform.GetChild(0).Find(OptionName).position.y, 0);
+        OptionPositionRight = new Vector3(transform.GetChild(0).Find(OptionName).GetComponent<BoxCollider>().bounds.max.x, transform.GetChild(0).Find(OptionName).position.y, 0);
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if(OptionName == "NewGameButton")
+            if(OptionName == "PlayButton")
             {
                 Option.NewGame();
             }
-            if(OptionName == "SaveLoadButton")
-            {
-                fileManager.FileMenuOpened = true;
-                Option.SaveLoadGame();
-            }
-            if (OptionName == "ContinueButton")
-            {
-                Option.Continue();
-            }
-            if (OptionName == "OptionsButton")
+            //if (OptionName == "SaveLoadButton")
+            //{
+            //    fileManager.FileMenuOpened = true;
+            //    Option.SaveLoadGame();
+            //}
+            //if (OptionName == "ContinueButton")
+            //{
+            //    Option.Continue();
+            //}
+            if (OptionName == "SoundOptionsButton")
             {
                 Option.Options();
             }

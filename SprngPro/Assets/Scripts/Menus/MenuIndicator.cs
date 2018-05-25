@@ -1,19 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MenuIndicator : MonoBehaviour {
 
-    private Menu menu;
+    Menu menu;
+    Animator anim;
+
+    Vector3 positionLeftIndicator;
+    Vector3 positionRightIndicator;
 
     void Start () {
         menu = GameObject.FindGameObjectWithTag("Menu").GetComponent<Menu>();
     }
 
 	void Update () {
-        Vector3 position = transform.position;
-        position.y = menu.OptionPosition.y;
-        position.x = menu.OptionPosition.x - 10;
-        transform.position = position;
+        anim.Play("IdleMenuIndicator");
+
+        if (gameObject.name == "IndicatorLeft")
+        {
+            positionLeftIndicator = transform.position;
+            positionLeftIndicator = menu.OptionPositionLeft;
+            //positionLeftIndicator = transform.position;
+            transform.position = positionLeftIndicator;
+        }
+        if (gameObject.name == "IndicatorRight")
+        {
+            positionRightIndicator = transform.position;
+            positionRightIndicator = menu.OptionPositionRight;
+            transform.position = positionRightIndicator;
+        }
     }
 }
