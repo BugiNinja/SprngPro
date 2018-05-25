@@ -77,8 +77,8 @@ public class MenuActivator : MonoBehaviour
         }
         else
         {
-            inter.EnableInput(true);
-            ppm.EnableMovement(true);
+            //inter.EnableInput(true);
+            //ppm.EnableMovement(true);
             Time.timeScale = 1;
         }
     }
