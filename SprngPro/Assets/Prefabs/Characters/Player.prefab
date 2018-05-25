@@ -1856,9 +1856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81416b50f0ed604bb16d5b84748351b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioName: 
-  AudioVolume: 0
-  AudioPitch: 0
+  Sounds: []
 --- !u!114 &114829269953245202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2032,7 +2030,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4c21f7b4eb6f44b8af19bc5b90f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iniRot: {x: 0, y: 0, z: 0, w: 0}
   XValue: 0
+  EnablepositionSwap: 0
 --- !u!137 &137042033288699606
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

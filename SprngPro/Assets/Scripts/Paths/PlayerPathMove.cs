@@ -14,13 +14,13 @@ public class PlayerPathMove : MonoBehaviour {
     private string pathName = "PlayerPath";
     private NodePath pathToFollow;
 
-    private bool enabledMove = true;
+    public bool enabledMove = true;
 
     private int CurrentWayPointId = 0;
     public int LastWayPointId; //Tallennukseen
 
     private int moveDirection = 1; //1 = forward, -1 = backward 
-    public float moveSpeed = 0;
+    private float moveSpeed = 0;
     public float WalkAnim = 1;
     private float reachDistance = 1f;
     private bool forceMovement;
@@ -139,6 +139,7 @@ public class PlayerPathMove : MonoBehaviour {
     {
         if (state)
         {
+            
             enabledMove = true;
         }
         else

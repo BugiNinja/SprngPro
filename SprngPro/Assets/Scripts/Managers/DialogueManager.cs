@@ -283,6 +283,7 @@ public class DialogueManager : MonoBehaviour {
     }
     private void EnableTextBox()
     {
+        
         textBox.SetActive(true);
         isActive = true;
         pMove.EnableMovement(false);
@@ -290,6 +291,7 @@ public class DialogueManager : MonoBehaviour {
 
     private void DisableTextBox()
     {
+        
         textBox.SetActive(false);
         isActive = false;
         pMove.EnableMovement(true);

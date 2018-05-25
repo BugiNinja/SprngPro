@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iniRot: {x: 0, y: 0, z: 0, w: 0}
   XValue: 0
+  EnablepositionSwap: 0
 --- !u!114 &114152464323819564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,7 +356,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: e5c42b216cd355c4c8f414dd39b741f1, type: 3}
     m_FontSize: 25
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
@@ -488,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -43.751373, y: 2.32768}
+  m_AnchoredPosition: {x: -35.490715, y: 4.1120396}
   m_SizeDelta: {x: 500, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224425987045584684

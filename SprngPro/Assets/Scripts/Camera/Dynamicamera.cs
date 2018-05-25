@@ -16,6 +16,10 @@ public class Dynamicamera : MonoBehaviour {
     public int NextSceneNumber;
     public int PrevSceneNumber;
     private PlayerPathMove ppm;
+    private int scene;
+    private bool startFade;
+    private float fadeValue;
+    private float fadeSpeed = 10;
 
     public float cameraDistance;
     private float MaxSize = 9;
@@ -52,31 +56,44 @@ public class Dynamicamera : MonoBehaviour {
         fade = new Color(0, 0, 0, 255);
         fadeSR.color = fade;
         stopPosition = Vector3.zero;
+        
     }
 
 
     void Update()
     {
-        newPositionX = player.transform.position.x + offset.x;
-
-        if (InBounds())
+        if (!startFade)
         {
-            //ScaleSize();
-            transform.position = player.transform.position + offset;
+            newPositionX = player.transform.position.x + offset.x;
+
+            if (InBounds())
+            {
+                //ScaleSize();
+                transform.position = player.transform.position + offset;
+            }
+            else
+            {
+                if ((transform.position.x - (c.orthographicSize * 2 * c.aspect / 2) - (transform.position.x - newPositionX) <= backgroundmin))
+                {
+                    ScreenTransition(1);
+                }
+                else if (transform.position.x + (c.orthographicSize * 2 * c.aspect / 2) + (newPositionX - transform.position.x) >= backgroundmax)
+                {
+                    ScreenTransition(-1);
+                }
+            }
+
         }
         else
         {
-            if((transform.position.x - (c.orthographicSize * 2 * c.aspect / 2) - (transform.position.x - newPositionX) <= backgroundmin))
+            fadeValue = fadeValue + 0.1f * fadeSpeed * Time.deltaTime;
+            fade = new Color(0, 0, 0, fadeValue);
+            fadeSR.color = fade;
+            if(fadeValue >= 1)
             {
-                ScreenTransition(1);
-            }
-            else if (transform.position.x + (c.orthographicSize * 2 * c.aspect / 2) + (newPositionX - transform.position.x) >= backgroundmax)
-            {
-                ScreenTransition(-1);
+                sm.ChangeScene(scene);
             }
         }
-
-
     }
     bool InBounds()
     {
@@ -157,5 +174,10 @@ public class Dynamicamera : MonoBehaviour {
                 c.orthographicSize -= ScaleSpeed;
             }
         }
+    }
+    public void Fade(int scene)
+    {
+        this.scene = scene;
+        startFade = true;
     }
 }

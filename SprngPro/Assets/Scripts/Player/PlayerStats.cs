@@ -4,9 +4,9 @@ using UnityEngine.Audio;
 public class PlayerStats : MonoBehaviour {
 
     //private FileManager fileManager;
-    //public Animator anim;
+    public Animator anim;
     //private GameObject deathScreen;
-
+    private PlayerPathMove ppm;
     private bool isHit;
     private bool isDead;
 
@@ -29,12 +29,16 @@ public class PlayerStats : MonoBehaviour {
         {
             deathScreen.gameObject.SetActive(false);
         }
-
+        
         if (!anim)
         {
             Debug.Log("Animator missing!!");
         }*/
-
+        ppm = gameObject.GetComponent<PlayerPathMove>();
+        if(ppm == null)
+        {
+            Debug.Log("mo");
+        }
         isHit = false;
         isDead = false;
 
@@ -44,7 +48,7 @@ public class PlayerStats : MonoBehaviour {
 	
 	void Update () {
         CheckIfDead();
-        Die();
+        //Die();
     }
 
     public int GetHealth()
@@ -63,11 +67,19 @@ public class PlayerStats : MonoBehaviour {
 
     public void Die()
     {
-        if(isDead)
-        {
+            if(ppm == null)
+            {
+                ppm = gameObject.GetComponent<PlayerPathMove>();
+            }
+            ppm.EnableMovement(false);
+            Anima2D.SpriteMeshInstance[] smi = GetComponentsInChildren<Anima2D.SpriteMeshInstance>();
+            for(int i = 0; i < smi.Length; i++)
+            {
+                smi[i].sortingLayerID = SortingLayer.NameToID("UI");
+            }
             //deathScreen.gameObject.SetActive(true);
-            //anim.Play("AppearDeathScreen");
+            anim.SetBool("Dead", true);
             Time.timeScale = 0;
-        }
+        
     }
 }

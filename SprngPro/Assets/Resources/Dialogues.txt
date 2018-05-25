@@ -107,6 +107,7 @@ _
 "So... could you fetch me some meat from the market?"
 .1
 The blacksmith gives you some coins.
+?2
 !
 +3
 .5
@@ -279,7 +280,6 @@ The hammer misses, landing next to him.
 "Oh now you did it!"
 .1
 He picks up the hammer and
-beats you to pulp.
 ?1
 !
 +2
@@ -314,11 +314,7 @@ You barely escape his fists and fall down.
 "But if I don't get good money for this..."
 .3
 "...I'll beat you up with my new hammer!"
-.1
-He takes the hammer from your hand and runs away.
-.1
-You finally have your home back.
-?1
+?10
 !
 _
 .1
@@ -334,12 +330,7 @@ Hit him in the head.
 "Aaargh!"
 .3
 "It hurts!"
-.1
-He runs away, crying.
-.1
-His arm looks funny.
-.1
-You finally have your home back.
+?7
 +2
 .3
 "S-stop it!"
@@ -349,9 +340,8 @@ You hit him in the head.
 He falls to the ground, and he's not moving.
 .1
 "I-I didn't mean to-"
+?8
 _
-.1
-"I just won the game! Wohoo!"
 !
 #11
 .1
@@ -538,3 +528,17 @@ _
 .8
 "Take care."
 !
+
+
+#37
+.8
+"Take care."
+!
+
+
+.8
+"Take care."
+!
+
+
+

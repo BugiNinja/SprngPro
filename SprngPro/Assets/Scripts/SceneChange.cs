@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour {
     private ProgressManager pm;
     private DialogueManager dm;
+    private Dynamicamera dc;
     int startSpot = 6;
     int direction = 0;
     private void Start()
@@ -26,6 +27,10 @@ public class SceneChange : MonoBehaviour {
         this.direction = direction;
 
     }
+    public void ChangeSceneWithFade(int sceneIndex)
+    {
+        dc.Fade(sceneIndex);
+    }
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
@@ -35,9 +40,11 @@ public class SceneChange : MonoBehaviour {
     {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
+    
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        dc = FindObjectOfType<Dynamicamera>();
         PlayerPathMove ppm = FindObjectOfType<PlayerPathMove>();
         if (ppm != null)
         {

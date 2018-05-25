@@ -8,14 +8,17 @@ public class ProgressManager : MonoBehaviour {
     public GameObject[] Characters;
     public Interactable[] InteractableCharacters;
     public Interactable[] InteractableObjects;
-    public bool[] Triggers = new bool[10];
+    private SceneChange sc;
+    public bool[] Triggers = new bool[11];
     public Dictionary<string, int> Inventory = new Dictionary<string, int>(); //Ehkä tallennukseen
     private PlayerStats ps;
+    private bool won;
 
     void Start()
     {
+        won = false;
         Triggers[0] = true;
-        
+        sc = FindObjectOfType<SceneChange>();
         UpdateCharacters();
         UpdateInteractable();
         
@@ -83,6 +86,7 @@ public class ProgressManager : MonoBehaviour {
         if (Triggers[1])
         {
             //saa turpaan
+            
             ps.Die();
         }
         if (Triggers[9])
@@ -146,11 +150,28 @@ public class ProgressManager : MonoBehaviour {
         }
         if (Triggers[7])
         {
-            //voitto1
+            if (!won)
+            {
+                sc.ChangeSceneWithFade(5);
+                won = true;
+            }
+            
         }
         if (Triggers[8])
         {
-            //voitto2
+            if (!won)
+            {
+                sc.ChangeSceneWithFade(6);
+                won = true;
+            }
+        }
+        if (Triggers[10])
+        {
+            if (!won)
+            {
+                sc.ChangeSceneWithFade(7);
+                won = true;
+            }
         }
         
 
