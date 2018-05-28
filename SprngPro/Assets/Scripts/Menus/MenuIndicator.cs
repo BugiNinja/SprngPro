@@ -13,7 +13,7 @@ public class MenuIndicator : MonoBehaviour {
     }
 
 	void Update () {
-        anim.Play("IdleMenuIndicator");
+        //anim.Play("IdleMenuIndicator");
 
         if (gameObject.name == "IndicatorLeft")
         {

@@ -86,8 +86,11 @@ public class ProgressManager : MonoBehaviour {
         if (Triggers[1])
         {
             //saa turpaan
+            if(ps != null)
+            {
+                ps.Die();
+            }
             
-            ps.Die();
         }
         if (Triggers[9])
         {

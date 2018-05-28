@@ -67,19 +67,28 @@ public class PlayerStats : MonoBehaviour {
 
     public void Die()
     {
-            if(ppm == null)
+        if(gameObject != null)
+        {
+            if (ppm == null)
             {
                 ppm = gameObject.GetComponent<PlayerPathMove>();
             }
-            ppm.EnableMovement(false);
-            Anima2D.SpriteMeshInstance[] smi = GetComponentsInChildren<Anima2D.SpriteMeshInstance>();
-            for(int i = 0; i < smi.Length; i++)
+            if (ppm != null)
             {
-                smi[i].sortingLayerID = SortingLayer.NameToID("UI");
+                ppm.EnableMovement(false);
+                Anima2D.SpriteMeshInstance[] smi = GetComponentsInChildren<Anima2D.SpriteMeshInstance>();
+                for (int i = 0; i < smi.Length; i++)
+                {
+                    smi[i].sortingLayerID = SortingLayer.NameToID("UI");
+                }
+                //deathScreen.gameObject.SetActive(true);
+                anim.SetBool("Dead", true);
+                Time.timeScale = 0;
             }
-            //deathScreen.gameObject.SetActive(true);
-            anim.SetBool("Dead", true);
-            Time.timeScale = 0;
+        }
         
+
+
+
     }
 }
